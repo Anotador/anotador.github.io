@@ -1,0 +1,58 @@
+[
+  {
+    "id": "c1",
+    "channel": "chat",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "My order arrived a day early, thank you!"
+      },
+      {
+        "role": "assistant",
+        "content": "Glad to hear it! Enjoy."
+      }
+    ]
+  },
+  {
+    "id": "c2",
+    "channel": "chat",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "I've been waiting 40 minutes for someone to answer."
+      },
+      {
+        "role": "assistant",
+        "content": "Sorry for the wait. I'm here now, how can I help?"
+      }
+    ]
+  },
+  {
+    "id": "c3",
+    "channel": "email",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Can I change my delivery address?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes. Go to Orders and choose Edit address."
+      }
+    ]
+  },
+  {
+    "id": "c4",
+    "channel": "chat",
+    "conversation": [
+      {
+        "role": "user",
+        "content": "The replacement works perfectly, you saved my week."
+      },
+      {
+        "role": "assistant",
+        "content": "That's great news, thanks for letting us know."
+      }
+    ]
+  }
+]
