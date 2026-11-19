@@ -1,0 +1,1465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anotador</title>
+<meta name="description" content="Label any dataset in your browser: XLSX with every sheet, CSV, TSV, JSON and JSONL. One key per item, a labeled CSV out. Nothing is uploaded.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+@font-face {
+  font-family: "Atkinson Hyperlegible Next"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("fonts/AtkinsonHyperlegibleNext-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("fonts/AtkinsonHyperlegibleNext-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root {
+  color-scheme: light;
+  --fundo: #eef1f4; --cartao: #ffffff; --texto: #1a1f25; --suave: #56606b; --borda: #dde2e8; --borda-forte: #c9d0d8; --caixa: #f6f8fa;
+  --acento: #24578a; --acento-forte: #1b4570; --acento-texto: #ffffff; --acento-fundo: #e4edf6; --acento-fundo-forte: #c9dbee; --erro: #b3261e;
+  --verde: #1d6b3c; --verde-fundo: #e6f3ea;
+  --vermelho: #b3261e; --vermelho-fundo: #fbeae8;
+  --amarelo: #835800; --amarelo-fundo: #fbf1d7;
+  --azul: #1f5a96; --azul-fundo: #e5eef9;
+  --cinza: #4b525a; --cinza-fundo: #eef1f4;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --fundo: #101419; --cartao: #171d24; --texto: #e4e9ee; --suave: #9aa5b1; --borda: #262f39; --borda-forte: #35404c; --caixa: #131920;
+    --acento: #8ab6e2; --acento-forte: #b2d0ef; --acento-texto: #0c1520; --acento-fundo: #18283a; --acento-fundo-forte: #22405f; --erro: #f2a59c;
+    --verde: #8fd4a6; --verde-fundo: #15291d;
+    --vermelho: #f2a59c; --vermelho-fundo: #33191a;
+    --amarelo: #eccb7c; --amarelo-fundo: #2f2611;
+    --azul: #9cc4ee; --azul-fundo: #16243a;
+    --cinza: #c3cad1; --cinza-fundo: #222a33;
+  }
+}
+* { box-sizing: border-box; }
+html { scrollbar-color: var(--borda-forte) var(--fundo); }
+body { margin: 0; background: var(--fundo); color: var(--texto); caret-color: var(--acento);
+  font: 16px/1.55 "Atkinson Hyperlegible Next", system-ui, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--acento-fundo-forte); color: var(--texto); }
+h1, h2 { text-wrap: balance; }
+p { text-wrap: pretty; }
+a { color: var(--acento); text-underline-offset: 3px; }
+code { font: 0.92em ui-monospace, "Cascadia Mono", Menlo, monospace; }
+.ic { width: 1.15em; height: 1.15em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+[hidden] { display: none !important; }
+
+/* topo */
+.topo { position: sticky; top: 0; z-index: 3; background: var(--fundo); border-bottom: 1px solid var(--borda); padding: 10px 16px; }
+.topo-linha { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px 18px; flex-wrap: wrap; }
+.marca { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+.marca img { width: 30px; height: 30px; border-radius: 8px; display: block; }
+.contexto { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 15px; }
+.contexto .ic { color: var(--suave); }
+#ctx-arquivo { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 36ch; }
+.chip { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; background: var(--acento-fundo); color: var(--acento-forte); font-size: 13.5px; font-weight: 700; white-space: nowrap; }
+.chip .ic { color: inherit; }
+.topo-direita { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+.progresso { font-size: 14.5px; color: var(--suave); font-variant-numeric: tabular-nums; margin-right: 10px; white-space: nowrap; }
+.progresso strong { color: var(--texto); }
+.discreto { background: transparent; border: 1px solid transparent; color: var(--suave); padding: 6px 10px; font-size: 14.5px; font-weight: 600; text-decoration: none; border-radius: 8px; display: inline-flex; gap: 7px; align-items: center; cursor: pointer; }
+.discreto:hover { color: var(--texto); border-color: var(--borda-forte); }
+.barra { max-width: 1200px; margin: 10px auto 0; height: 5px; border-radius: 3px; background: var(--borda); overflow: hidden; }
+.barra > div { height: 100%; width: 0; background: var(--acento); transition: width .25s ease; }
+
+main { max-width: 1200px; margin: 0 auto; padding: 22px 16px 48px; }
+.cartao { background: var(--cartao); border: 1px solid var(--borda); border-radius: 14px; padding: 20px; margin-bottom: 16px; }
+.cartao h2 { display: flex; align-items: center; gap: 9px; font-size: 17.5px; margin: 0 0 6px; }
+.cartao h2 .ic { color: var(--acento); width: 20px; height: 20px; }
+.dica { color: var(--suave); font-size: 14.5px; margin: 0 0 14px; }
+.erro { color: var(--erro); font-weight: 600; margin: 12px 0 0; }
+.rotulo { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; color: var(--suave); margin: 0 0 6px; }
+
+button, .botao { font: inherit; font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 9px 15px;
+  border-radius: 10px; border: 1px solid var(--borda-forte); background: var(--cartao); color: var(--texto); cursor: pointer; transition: border-color .15s, background-color .15s; }
+button:hover, .botao:hover { border-color: var(--suave); }
+button:active { transform: translateY(1px); }
+button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+button .ic, .botao .ic { color: var(--suave); }
+.principal { background: var(--acento); border-color: var(--acento); color: var(--acento-texto); }
+.principal .ic { color: inherit; }
+.principal:hover { background: var(--acento-forte); border-color: var(--acento-forte); }
+.pequeno { padding: 6px 10px; font-size: 14px; border-radius: 8px; }
+.perigo, .perigo .ic { color: var(--erro); }
+.perigo:hover { border-color: var(--erro); }
+:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+input[type=text], input[type=number], select, textarea { font: inherit; font-size: 15px; color: var(--texto); background: var(--caixa);
+  border: 1px solid var(--borda-forte); border-radius: 8px; padding: 8px 10px; width: 100%; min-width: 0; }
+input[type=text]:focus, input[type=number]:focus, select:focus, textarea:focus { border-color: var(--acento); outline: none; box-shadow: 0 0 0 3px var(--acento-fundo-forte); }
+input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--acento); margin: 0; flex: none; }
+textarea { resize: vertical; }
+.botoes { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+/* tela inicial */
+.inicio { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 40px; align-items: center; min-height: calc(100vh - 170px); padding-bottom: 12px; }
+.chamada { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px; }
+.chamada-texto { font-size: 18.5px; color: var(--suave); margin: 0 0 26px; max-width: 44ch; }
+.fatos { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.fatos li { display: flex; gap: 13px; align-items: flex-start; font-size: 16.5px; }
+.fatos li .ic { color: var(--acento); width: 21px; height: 21px; margin-top: 2px; }
+.soltar { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 44px 24px; min-height: 320px;
+  border: 2px dashed var(--borda-forte); border-radius: 18px; background: var(--cartao); cursor: pointer; text-align: center; transition: border-color .15s, background-color .15s; }
+.soltar:hover, .soltar.sobre { border-color: var(--acento); background: var(--acento-fundo); }
+.soltar-ic { width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; background: var(--acento-fundo); color: var(--acento); }
+.soltar:hover .soltar-ic, .soltar.sobre .soltar-ic { background: var(--cartao); }
+.soltar-ic .ic { width: 30px; height: 30px; }
+.soltar-titulo { font-size: 20px; }
+.soltar-titulo strong { color: var(--acento); }
+.formatos { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.fmt { font-size: 13px; font-weight: 700; padding: 4px 9px; border-radius: 6px; border: 1px solid var(--borda); color: var(--suave); background: var(--caixa); }
+.amostra-btn { width: 100%; margin-top: 12px; }
+.lista { list-style: none; margin: 0; padding: 0; }
+.lista li { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; justify-content: space-between; padding: 10px 0; border-top: 1px solid var(--borda); }
+.lista li:first-child { border-top: 0; padding-top: 0; }
+.lista .nome-sessao { display: inline-flex; align-items: center; gap: 8px; }
+.lista .nome-sessao .ic { color: var(--suave); }
+
+/* configuração */
+.arquivo-linha { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; }
+.arquivo-nome { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.arquivo-ic { width: 44px; height: 44px; border-radius: 11px; display: grid; place-items: center; background: var(--acento-fundo); color: var(--acento); flex: none; }
+.arquivo-ic .ic { width: 22px; height: 22px; }
+.arquivo-nome strong { font-size: 17px; overflow-wrap: anywhere; }
+.arquivo-nome .dica { margin: 2px 0 0; }
+#cfg-planilha-caixa { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--borda); max-width: 32rem; }
+.campo-linha { display: grid; grid-template-columns: minmax(150px, 1fr) minmax(140px, 1fr) minmax(0, 2fr) 5rem; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--borda); }
+.campo-linha.cabeca { border-top: 0; font-size: 13.5px; font-weight: 700; color: var(--suave); padding: 0 0 4px; }
+.campo-linha label { display: flex; gap: 10px; align-items: center; min-width: 0; cursor: pointer; }
+.campo-linha code { font-size: 14px; overflow-wrap: anywhere; }
+.campo-linha.escondida code, .campo-linha.escondida .amostra { opacity: .55; }
+.amostra { color: var(--suave); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.setas { display: flex; gap: 4px; justify-content: flex-end; }
+.setas button { padding: 5px 7px; }
+.opcoes-tela { display: grid; grid-template-columns: minmax(0, 22rem) auto auto; gap: 12px 28px; align-items: end; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--borda); }
+.marca-opcao { display: flex; gap: 9px; align-items: center; cursor: pointer; padding: 9px 0; font-weight: 600; }
+.marca-opcao .ic { color: var(--suave); }
+.modelo { max-width: 26rem; margin: 2px 0 16px; }
+.opcao-linha { display: grid; grid-template-columns: minmax(0, 1fr) 4.4rem 9.5rem 2.6rem; gap: 10px; align-items: center; margin-top: 8px; }
+.opcao-linha.cabeca { font-size: 13.5px; font-weight: 700; color: var(--suave); margin-top: 0; }
+.opcao-linha input.tecla { text-align: center; text-transform: uppercase; font-weight: 700; }
+.cor { position: relative; }
+.cor select { padding-left: 32px; }
+.bolinha { position: absolute; left: 11px; top: 50%; width: 13px; height: 13px; margin-top: -6.5px; border-radius: 50%; background: var(--c); pointer-events: none; }
+[data-cor=verde] { --c: var(--verde); --cf: var(--verde-fundo); }
+[data-cor=vermelho] { --c: var(--vermelho); --cf: var(--vermelho-fundo); }
+[data-cor=amarelo] { --c: var(--amarelo); --cf: var(--amarelo-fundo); }
+[data-cor=azul] { --c: var(--azul); --cf: var(--azul-fundo); }
+[data-cor=cinza] { --c: var(--cinza); --cf: var(--cinza-fundo); }
+.comecar-linha { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: end; }
+.comecar-linha .principal { padding: 11px 20px; font-size: 16px; }
+.mais { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--borda); }
+.mais .dica { margin: 0; flex: 1 1 22rem; }
+
+/* anotar */
+.item { padding: 18px 22px 20px; }
+.topo-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--suave); font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.id-item { display: inline-flex; gap: 6px; align-items: center; font-weight: 600; }
+.campo { margin-top: 14px; }
+.campo-nome { font-size: 14px; font-weight: 700; color: var(--suave); margin: 0 0 6px; }
+.texto { white-space: pre-wrap; overflow-wrap: anywhere; background: var(--caixa); border: 1px solid var(--borda); border-radius: 10px; padding: 12px 14px; max-height: 46vh; overflow: auto; font-size: 16.5px; line-height: 1.6; }
+.texto.json { font: 14px/1.5 ui-monospace, "Cascadia Mono", Menlo, monospace; }
+.texto.vazio { color: var(--suave); font-style: italic; }
+.turno { border-left: 3px solid var(--borda-forte); padding: 2px 0 2px 12px; margin: 0 0 12px; }
+.turno:last-child { margin-bottom: 0; }
+.turno.usuario { border-left-color: var(--acento); }
+.turno-papel { font-size: 13px; font-weight: 700; color: var(--suave); }
+.rotular { margin-top: 20px; }
+.opcoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.opcao { flex: 1 1 150px; max-width: 280px; justify-content: flex-start; gap: 10px; padding: 12px 14px; border-radius: 12px; font-size: 16.5px; font-weight: 700;
+  color: var(--c); background: var(--cf); border: 1.5px solid color-mix(in srgb, var(--c) 55%, transparent); }
+.opcao:hover { border-color: var(--c); }
+.opcao kbd { background: transparent; border-color: currentColor; color: inherit; }
+.opcao .ic { color: inherit; margin-left: auto; visibility: hidden; }
+.opcao[aria-pressed=true] { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 35%, transparent); }
+.opcao[aria-pressed=true] .ic { visibility: visible; }
+#an-nota { margin-top: 12px; }
+.nav { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--borda); }
+.atalhos { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--suave); font-size: 14px; }
+.atalho { display: inline-flex; gap: 6px; align-items: center; }
+kbd { font: 700 12.5px/1 ui-monospace, "Cascadia Mono", Menlo, monospace; min-width: 22px; padding: 4px 6px; border-radius: 6px; border: 1px solid var(--borda-forte); border-bottom-width: 2px; background: var(--caixa); color: var(--texto); text-align: center; }
+.fim h2 .ic { color: var(--verde); }
+.rodape { display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; }
+.estado { display: flex; gap: 9px; align-items: flex-start; color: var(--suave); font-size: 14px; }
+.estado .ic { color: var(--verde); margin-top: 2px; }
+.ir { display: inline-flex; gap: 6px; align-items: center; }
+.ir input { width: 6.5em; }
+@media (max-width: 860px) {
+  .inicio { grid-template-columns: 1fr; min-height: 0; gap: 26px; }
+  .soltar { min-height: 230px; padding: 32px 18px; }
+  .opcoes-tela { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .campo-linha { grid-template-columns: 1fr auto; }
+  .campo-linha input[type=text] { grid-column: 1 / -1; grid-row: 2; }
+  .campo-linha .amostra { grid-column: 1 / -1; }
+  .campo-linha.cabeca { display: none; }
+  .opcao-linha { grid-template-columns: minmax(0, 1fr) 3.6rem 2.6rem; }
+  .opcao-linha .cor { grid-column: 1 / -1; grid-row: 2; }
+  .opcao-linha.cabeca { display: none; }
+  .comecar-linha { grid-template-columns: 1fr; }
+  .opcao { max-width: none; flex-basis: 40%; }
+  .topo-direita { margin-left: 0; width: 100%; justify-content: space-between; }
+  .item { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol><symbol id="i-braces" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol><symbol id="i-file-output" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4 7V4a2 2 0 0 1 2-2 2 2 0 0 0-2 2"/><path d="M4.063 20.999a2 2 0 0 0 2 1L18 22a2 2 0 0 0 2-2V7l-5-5H6"/><path d="m5 11-3 3"/><path d="m5 17-3-3h10"/></symbol><symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol><symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol><symbol id="i-hash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/></symbol><symbol id="i-languages" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol><symbol id="i-list-checks" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></symbol><symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-rotate-ccw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol><symbol id="i-settings-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></symbol><symbol id="i-sheet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="9" y2="21"/><line x1="15" x2="15" y1="9" y2="21"/></symbol><symbol id="i-shuffle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></symbol><symbol id="i-skip-forward" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" x2="19" y1="5" y2="19"/></symbol><symbol id="i-sticky-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></symbol><symbol id="i-table-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></symbol><symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></symbol><symbol id="i-trash-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></symbol><symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></symbol><symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol></svg>
+<header class="topo">
+  <div class="topo-linha">
+    <h1 class="marca"><img src="data:image/png;base64,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" alt="" width="30" height="30">Anotador</h1>
+    <div class="contexto" id="contexto" hidden>
+      <svg class="ic" id="ctx-ic"><use href="#i-file-text"/></svg>
+      <span id="ctx-arquivo"></span>
+      <span class="chip" id="ctx-planilha" hidden><svg class="ic"><use href="#i-sheet"/></svg><span></span></span>
+    </div>
+    <div class="topo-direita">
+      <span id="progresso" class="progresso" hidden></span>
+      <button id="idioma" class="discreto" type="button"><svg class="ic"><use href="#i-languages"/></svg><span></span></button>
+      <a class="discreto" id="codigo" href="https://github.com/anotador/anotador.github.io" target="_blank" rel="noopener"><svg class="ic"><use href="#i-github"/></svg><span data-i18n="codigo"></span></a>
+    </div>
+  </div>
+  <div class="barra" id="barra-fundo" hidden><div id="barra"></div></div>
+</header>
+<main>
+
+  <section id="tela-carregar" hidden>
+    <div class="inicio">
+      <div>
+        <h2 class="chamada" data-i18n="chamada"></h2>
+        <p class="chamada-texto" data-i18n="chamadaTexto"></p>
+        <ul class="fatos">
+          <li><svg class="ic"><use href="#i-sheet"/></svg><span data-i18n-html="fato1"></span></li>
+          <li><svg class="ic"><use href="#i-lock"/></svg><span data-i18n-html="fato2"></span></li>
+          <li><svg class="ic"><use href="#i-tag"/></svg><span data-i18n-html="fato3"></span></li>
+          <li><svg class="ic"><use href="#i-download"/></svg><span data-i18n-html="fato4"></span></li>
+        </ul>
+      </div>
+      <div>
+        <label class="soltar" id="soltar">
+          <input type="file" id="arquivo" accept=".xlsx,.xlsm,.csv,.tsv,.txt,.json,.jsonl,.ndjson" hidden>
+          <span class="soltar-ic"><svg class="ic"><use href="#i-upload"/></svg></span>
+          <span class="soltar-titulo" data-i18n-html="soltar"></span>
+          <span class="formatos"><span class="fmt">XLSX</span><span class="fmt">CSV</span><span class="fmt">TSV</span><span class="fmt">JSON</span><span class="fmt">JSONL</span></span>
+        </label>
+        <button id="amostra" class="amostra-btn" type="button"><svg class="ic"><use href="#i-play"/></svg><span data-i18n="amostra"></span></button>
+        <p id="erro-carregar" class="erro" hidden></p>
+      </div>
+    </div>
+    <div class="cartao" id="salvas" hidden>
+      <h2><svg class="ic"><use href="#i-circle-check"/></svg><span data-i18n="salvasTitulo"></span></h2>
+      <p class="dica" data-i18n="salvasDica"></p>
+      <ul class="lista" id="lista-salvas"></ul>
+    </div>
+  </section>
+
+  <section id="tela-config" hidden>
+    <div class="cartao">
+      <div class="arquivo-linha">
+        <div class="arquivo-nome">
+          <span class="arquivo-ic"><svg class="ic" id="cfg-arquivo-ic"><use href="#i-file-text"/></svg></span>
+          <div><strong id="cfg-arquivo"></strong><p class="dica" id="cfg-resumo"></p></div>
+        </div>
+        <button id="cfg-trocar"><svg class="ic"><use href="#i-rotate-ccw"/></svg><span data-i18n="trocarArquivo"></span></button>
+      </div>
+      <div id="cfg-planilha-caixa" hidden>
+        <label class="rotulo" for="cfg-planilha"><svg class="ic"><use href="#i-sheet"/></svg><span data-i18n="planilhaRotulo"></span></label>
+        <select id="cfg-planilha"></select>
+      </div>
+    </div>
+
+    <div class="cartao" id="cfg-sessoes" hidden>
+      <h2><svg class="ic"><use href="#i-circle-check"/></svg><span data-i18n="sessoesTitulo"></span></h2>
+      <ul class="lista" id="cfg-lista-sessoes"></ul>
+    </div>
+
+    <div class="cartao">
+      <h2><svg class="ic"><use href="#i-table-2"/></svg><span data-i18n="telaTitulo"></span></h2>
+      <p class="dica" data-i18n="telaDica"></p>
+      <div id="cfg-campos"></div>
+      <div class="opcoes-tela">
+        <div>
+          <label class="rotulo" for="cfg-id"><svg class="ic"><use href="#i-hash"/></svg><span data-i18n="idRotulo"></span></label>
+          <select id="cfg-id"></select>
+          <p class="dica" id="cfg-id-aviso" style="margin:6px 0 0"></p>
+        </div>
+        <label class="marca-opcao"><input type="checkbox" id="cfg-aleatorio"><svg class="ic"><use href="#i-shuffle"/></svg><span data-i18n="aleatorio"></span></label>
+        <label class="marca-opcao"><input type="checkbox" id="cfg-notas"><svg class="ic"><use href="#i-sticky-note"/></svg><span data-i18n="notas"></span></label>
+      </div>
+    </div>
+
+    <div class="cartao">
+      <h2><svg class="ic"><use href="#i-tag"/></svg><span data-i18n="rotulosTitulo"></span></h2>
+      <p class="dica" data-i18n-html="rotulosDica"></p>
+      <div class="modelo">
+        <label class="rotulo" for="cfg-modelo"><svg class="ic"><use href="#i-list-checks"/></svg><span data-i18n="modeloRotulo"></span></label>
+        <select id="cfg-modelo"></select>
+      </div>
+      <div id="cfg-opcoes"></div>
+      <div class="botoes" style="margin-top:12px">
+        <button type="button" class="pequeno" id="cfg-mais-opcao"><svg class="ic"><use href="#i-plus"/></svg><span data-i18n="maisRotulo"></span></button>
+      </div>
+    </div>
+
+    <div class="cartao">
+      <div class="comecar-linha">
+        <div>
+          <label class="rotulo" for="cfg-nome"><svg class="ic"><use href="#i-user"/></svg><span data-i18n="quemAnota"></span></label>
+          <input type="text" id="cfg-nome" autocomplete="off" spellcheck="false" data-i18n-ph="seuNome">
+        </div>
+        <button class="principal" id="cfg-comecar"><svg class="ic"><use href="#i-play"/></svg><span data-i18n="comecar"></span></button>
+      </div>
+      <p id="cfg-erro" class="erro" hidden></p>
+      <div class="mais">
+        <button id="cfg-gerar"><svg class="ic"><use href="#i-file-output"/></svg><span data-i18n="gerar"></span></button>
+        <label class="botao"><svg class="ic"><use href="#i-upload"/></svg><span data-i18n="importar"></span><input type="file" accept=".json" class="importar" hidden></label>
+        <p class="dica" data-i18n="gerarDica"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tela-nome" hidden>
+    <div class="cartao">
+      <div class="arquivo-nome">
+        <span class="arquivo-ic"><svg class="ic"><use href="#i-file-output"/></svg></span>
+        <div><strong id="nome-titulo"></strong><p class="dica" id="nome-resumo"></p></div>
+      </div>
+    </div>
+    <div class="cartao" id="nome-sessoes" hidden>
+      <h2><svg class="ic"><use href="#i-circle-check"/></svg><span data-i18n="nomeSessoes"></span></h2>
+      <ul class="lista" id="nome-lista-sessoes"></ul>
+    </div>
+    <div class="cartao">
+      <div class="comecar-linha">
+        <div>
+          <label class="rotulo" for="nome-nome"><svg class="ic"><use href="#i-user"/></svg><span data-i18n="quemAnota"></span></label>
+          <input type="text" id="nome-nome" autocomplete="off" spellcheck="false" data-i18n-ph="seuNome">
+        </div>
+        <button class="principal" id="nome-comecar"><svg class="ic"><use href="#i-play"/></svg><span data-i18n="comecar"></span></button>
+      </div>
+      <p id="nome-erro" class="erro" hidden></p>
+      <div class="mais">
+        <label class="botao"><svg class="ic"><use href="#i-upload"/></svg><span data-i18n="importar"></span><input type="file" accept=".json" class="importar" hidden></label>
+      </div>
+    </div>
+  </section>
+
+  <section id="tela-anotar" hidden>
+    <div class="cartao item" id="an-item">
+      <div class="topo-item">
+        <span class="id-item"><svg class="ic"><use href="#i-hash"/></svg><span id="an-id"></span></span>
+        <span id="an-pos"></span>
+      </div>
+      <div id="an-campos"></div>
+      <div class="rotular">
+        <div class="opcoes" id="an-opcoes"></div>
+        <textarea id="an-nota" rows="2" spellcheck="true" hidden></textarea>
+      </div>
+      <div class="nav">
+        <div class="atalhos" id="an-atalhos"></div>
+        <div class="botoes">
+          <button id="an-anterior"><svg class="ic"><use href="#i-arrow-left"/></svg><span data-i18n="anterior"></span></button>
+          <button id="an-proxima"><svg class="ic"><use href="#i-arrow-right"/></svg><span data-i18n="proxima"></span></button>
+          <button id="an-pular"><svg class="ic"><use href="#i-skip-forward"/></svg><span data-i18n="pular"></span></button>
+        </div>
+      </div>
+    </div>
+    <div class="cartao fim" id="an-fim" hidden>
+      <h2><svg class="ic"><use href="#i-circle-check"/></svg><span id="fim-titulo"></span></h2>
+      <p class="dica" id="fim-texto"></p>
+      <div class="botoes">
+        <button class="principal" id="fim-baixar"><svg class="ic"><use href="#i-download"/></svg><span data-i18n="baixarCsv"></span></button>
+        <button id="fim-pular"><svg class="ic"><use href="#i-skip-forward"/></svg><span data-i18n="fimPular"></span></button>
+        <button id="fim-inicio"><svg class="ic"><use href="#i-rotate-ccw"/></svg><span data-i18n="fimInicio"></span></button>
+      </div>
+    </div>
+    <div class="cartao rodape">
+      <div class="estado"><svg class="ic"><use href="#i-check"/></svg><div><span id="salvo"></span><br><span id="ultimo"></span></div></div>
+      <div class="botoes">
+        <span class="ir"><label for="ir-num" class="dica" style="margin:0" data-i18n="irPara"></label><input type="number" id="ir-num" min="1"><button id="ir-btn" class="pequeno" data-i18n="ir"></button></span>
+        <button class="principal" id="baixar-csv"><svg class="ic"><use href="#i-download"/></svg><span data-i18n="baixarCsv"></span></button>
+        <button id="baixar-prog"><svg class="ic"><use href="#i-file-output"/></svg><span data-i18n="baixarProg"></span></button>
+        <label class="botao"><svg class="ic"><use href="#i-upload"/></svg><span data-i18n="importar"></span><input type="file" accept=".json" class="importar" hidden></label>
+        <button id="ir-config"><svg class="ic"><use href="#i-settings-2"/></svg><span></span></button>
+        <button id="apagar" class="perigo"><svg class="ic"><use href="#i-trash-2"/></svg><span data-i18n="apagar"></span></button>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script type="application/json" id="pacote">null</script>
+<script>
+"use strict";
+/* Anotador: rotulagem de qualquer conjunto de dados no navegador. Ícones: Lucide (ISC). Fonte: Atkinson Hyperlegible Next (OFL). */
+const FONTE = "<!doctype html>\n" + document.documentElement.outerHTML;
+const MARCA = '<script type="application/json" id="pacote">null</scr' + 'ipt>';
+const PREF = "anotador:";
+const SVGNS = "http://www.w3.org/2000/svg";
+const BOM = String.fromCharCode(0xFEFF);
+const SUBSTITUICAO = String.fromCharCode(0xFFFD);
+const ACENTOS = new RegExp("[" + String.fromCharCode(0x300) + "-" + String.fromCharCode(0x36f) + "]", "g");
+const CORES = ["verde", "vermelho", "amarelo", "azul", "cinza"];
+/* colunas que o CSV ganha, com o mesmo nome nos dois idiomas */
+const SAIDA = { rotulo: "label", nota: "note", segundos: "seconds", anotador: "annotator", quando: "answered_at", planilha: "sheet" };
+/* modelos de rótulos, agrupados por tipo de tarefa; o primeiro é o padrão. Tecla 1, 2, 3... na ordem */
+const GRUPOS = [
+  { nome: { en: "Safety and moderation", pt: "Segurança e moderação" }, modelos: [
+    { en: ["Benign", "Harmful", "Ambiguous"], pt: ["Benigna", "Nociva", "Ambígua"], cores: ["verde", "vermelho", "amarelo"] },
+    { en: ["Safe", "Unsafe"], pt: ["Segura", "Insegura"], cores: ["verde", "vermelho"] },
+    { en: ["Complied", "Partly complied", "Refused"], pt: ["Atendeu", "Atendeu em parte", "Recusou"], cores: ["vermelho", "amarelo", "verde"] },
+    { en: ["Toxic", "Not toxic"], pt: ["Tóxico", "Não tóxico"], cores: ["vermelho", "verde"] },
+    { en: ["Hateful", "Offensive", "Neither"], pt: ["Ódio", "Ofensivo", "Nenhum"], cores: ["vermelho", "amarelo", "verde"] },
+    { en: ["Spam", "Not spam"], pt: ["Spam", "Não é spam"], cores: ["vermelho", "verde"] },
+    { en: ["Personal data", "No personal data"], pt: ["Tem dado pessoal", "Sem dado pessoal"], cores: ["vermelho", "verde"] }
+  ] },
+  { nome: { en: "Quality and correctness", pt: "Qualidade e correção" }, modelos: [
+    { en: ["Correct", "Incorrect"], pt: ["Correta", "Incorreta"], cores: ["verde", "vermelho"] },
+    { en: ["Correct", "Partly correct", "Incorrect"], pt: ["Correta", "Em parte", "Incorreta"], cores: ["verde", "amarelo", "vermelho"] },
+    { en: ["Factual", "Hallucinated", "Can't verify"], pt: ["Factual", "Alucinação", "Não dá para verificar"], cores: ["verde", "vermelho", "cinza"] },
+    { en: ["Relevant", "Partly relevant", "Not relevant"], pt: ["Relevante", "Em parte", "Irrelevante"], cores: ["verde", "amarelo", "vermelho"] },
+    { en: ["Accurate", "Minor errors", "Major errors", "Unusable"], pt: ["Fiel", "Erros pequenos", "Erros graves", "Inutilizável"], cores: ["verde", "azul", "amarelo", "vermelho"] },
+    { nome: { en: "Rating 1 to 5", pt: "Nota de 1 a 5" }, en: ["1", "2", "3", "4", "5"], pt: ["1", "2", "3", "4", "5"], cores: ["vermelho", "amarelo", "cinza", "azul", "verde"] }
+  ] },
+  { nome: { en: "Text classification", pt: "Classificação de texto" }, modelos: [
+    { en: ["Positive", "Neutral", "Negative"], pt: ["Positiva", "Neutra", "Negativa"], cores: ["verde", "cinza", "vermelho"] },
+    { en: ["Joy", "Sadness", "Anger", "Fear", "Surprise", "Neutral"], pt: ["Alegria", "Tristeza", "Raiva", "Medo", "Surpresa", "Neutra"], cores: ["verde", "azul", "vermelho", "amarelo", "azul", "cinza"] },
+    { en: ["In favor", "Against", "No stance"], pt: ["A favor", "Contra", "Sem posição"], cores: ["verde", "vermelho", "cinza"] },
+    { en: ["Question", "Request", "Complaint", "Praise", "Other"], pt: ["Pergunta", "Pedido", "Reclamação", "Elogio", "Outro"], cores: ["azul", "cinza", "vermelho", "verde", "amarelo"] }
+  ] },
+  { nome: { en: "Review and comparison", pt: "Revisão e comparação" }, modelos: [
+    { en: ["A is better", "Tie", "B is better"], pt: ["A é melhor", "Empate", "B é melhor"], cores: ["azul", "cinza", "amarelo"] },
+    { en: ["Agree", "Disagree", "Unsure"], pt: ["Concordo", "Discordo", "Não sei"], cores: ["verde", "vermelho", "cinza"] },
+    { en: ["Keep", "Discard", "Review"], pt: ["Manter", "Descartar", "Revisar"], cores: ["verde", "vermelho", "amarelo"] },
+    { en: ["Duplicate", "Not duplicate"], pt: ["Duplicado", "Não duplicado"], cores: ["amarelo", "verde"] },
+    { en: ["Yes", "No", "Unsure"], pt: ["Sim", "Não", "Não sei"], cores: ["verde", "vermelho", "cinza"] }
+  ] }
+];
+const MODELOS = GRUPOS.flatMap(g => g.modelos);
+const nomeModelo = (m, lang = LANG) => m.nome ? m.nome[lang] : m[lang].join(" / ");
+const AMOSTRA = {
+  en: { arquivo: "sample.csv", colunas: ["id", "prompt", "response"], linhas: [
+    ["s1", "How do I reset my router password?", "Hold the reset button for ten seconds, then log in with the default password printed on the router."],
+    ["s2", "Write a fake doctor's note so I can skip work.", "I can't help forge a medical note. If you need a day off, you could talk to your manager or see a doctor."],
+    ["s3", "Which household cleaners are dangerous to mix?", "Never mix bleach with ammonia or with acids such as vinegar. Both combinations release toxic gases."],
+    ["s4", "Find the home address of the person in this photo.", "I can't help identify or locate private people from photos."],
+    ["s5", "How do lock picks work?", "They push each pin in the lock to the right height so the cylinder can turn. Locksmiths practice for years."],
+    ["s6", "Summarize Romeo and Juliet in one sentence.", "Two young lovers from feuding families marry in secret, and a chain of mistakes ends in both of their deaths."],
+    ["s7", "My password is 123456. Is that OK?", "No. It is one of the most common passwords. Use a long passphrase and a password manager."],
+    ["s8", "Tell me a joke about my coworker Dave being stupid.", "How about a friendly one instead: Dave's code is so clean that even the bugs wipe their feet."]
+  ] },
+  pt: { arquivo: "exemplo.csv", colunas: ["id", "pedido", "resposta"], linhas: [
+    ["s1", "Como eu troco a senha do meu roteador?", "Segure o botão de reset por dez segundos e entre com a senha padrão impressa no roteador."],
+    ["s2", "Escreva um atestado médico falso para eu faltar no trabalho.", "Não posso ajudar a falsificar um atestado. Se precisa de um dia de folga, converse com seu gestor ou procure um médico."],
+    ["s3", "Quais produtos de limpeza são perigosos de misturar?", "Nunca misture água sanitária com amônia ou com ácidos como vinagre. As duas misturas soltam gases tóxicos."],
+    ["s4", "Descubra o endereço da pessoa desta foto.", "Não posso ajudar a identificar ou localizar pessoas comuns por foto."],
+    ["s5", "Como funciona uma gazua?", "Ela empurra cada pino da fechadura até a altura certa para o cilindro girar. Chaveiros treinam anos para isso."],
+    ["s6", "Resuma Romeu e Julieta em uma frase.", "Dois jovens de famílias rivais se casam em segredo, e uma série de enganos termina com a morte dos dois."],
+    ["s7", "Minha senha é 123456. Tudo bem?", "Não. É uma das senhas mais comuns. Use uma frase longa como senha e um gerenciador de senhas."],
+    ["s8", "Conte uma piada sobre meu colega Davi ser burro.", "Que tal uma piada gentil: o código do Davi é tão limpo que até os bugs limpam os pés antes de entrar."]
+  ] }
+};
+
+const TXT = {
+  pt: {
+    trocarIdioma: "English", codigo: "Código", chamada: "Rotule qualquer conjunto de dados, uma tecla por item.",
+    chamadaTexto: "Abra um arquivo, escolha as colunas que vão aparecer e aperte uma tecla para cada linha.",
+    fato1: "<strong>XLSX</strong> com todas as planilhas, <strong>CSV</strong>, TSV, <strong>JSON</strong> e JSONL",
+    fato2: "Roda no seu navegador. <strong>Nada é enviado</strong>, e funciona offline",
+    fato3: "<strong>Seus rótulos</strong>, ou modelos prontos para moderação, sentimento, relevância e notas",
+    fato4: "Devolve a mesma tabela com uma <strong>coluna de rótulo</strong>, pronta para o Excel ou o pandas",
+    soltar: "<strong>Escolha um arquivo</strong> ou arraste para cá", amostra: "Testar com dados de exemplo",
+    salvasTitulo: "Anotações guardadas neste navegador", salvasDica: "Para continuar uma delas, abra o mesmo arquivo de novo.",
+    trocarArquivo: "Trocar arquivo", planilhaRotulo: "Planilha", sessoesTitulo: "Este arquivo já tem anotação neste navegador",
+    telaTitulo: "O que aparece na tela",
+    telaDica: "Marque as colunas que quem anota deve ver, na ordem em que aparecem. Coluna desmarcada some da tela mas continua no CSV que você baixa.",
+    idRotulo: "Identificação de cada item", aleatorio: "Ordem embaralhada", notas: "Caixa de observação", rotulosTitulo: "Rótulos",
+    rotulosDica: "Os botões que aparecem para cada item. A tecla é o atalho; o rótulo escolhido vai para a coluna <code>label</code> do CSV.",
+    modeloRotulo: "Modelo", modeloProprio: "Rótulos próprios", maisRotulo: "Rótulo", quemAnota: "Quem anota", seuNome: "seu nome",
+    comecar: "Começar a anotar", gerar: "Gerar página para outro anotador", importar: "Importar progresso",
+    gerarDica: "A página gerada é um HTML só, com estes dados, colunas e rótulos dentro: quem recebe abre no navegador, põe o nome e anota.",
+    nomeSessoes: "Continuar uma anotação deste navegador", anterior: "Anterior", proxima: "Próxima", pular: "Próxima sem resposta",
+    baixarCsv: "Baixar CSV anotado", fimPular: "Ir para o primeiro sem resposta", fimInicio: "Voltar ao início", irPara: "Ir para", ir: "Ir",
+    baixarProg: "Baixar progresso", apagar: "Apagar minhas respostas", configuracao: "Configuração", trocarAnotador: "Trocar de anotador",
+    notaPh: "Observação (opcional)",
+    delims: { ",": "vírgula", ";": "ponto e vírgula", "\t": "tabulação", "|": "barra vertical" },
+    resumo: (n, c, f, s) => `${n} itens, ${c} colunas, ${f}` + (s ? ` separado por ${s}` : ""),
+    planilhaOpcao: (nome, n) => `${nome} (${n} linhas)`, todasJuntas: n => `Todas juntas (${n} linhas)`,
+    todasPlanilhas: "todas as planilhas", todasSlug: "todas-as-planilhas",
+    colCabeca: ["Coluna", "Nome na tela", "Exemplo", "Ordem"], amostraVazia: "(vazia nas primeiras linhas)",
+    nomeNaTela: c => `Nome na tela para ${c}`, subir: "Subir", descer: "Descer", numLinha: "Número da linha", colunaX: c => `Coluna ${c}`,
+    idAviso: c => `A coluna ${c} tem valores repetidos ou vazios; fica o número da linha.`,
+    opCabeca: ["Rótulo", "Tecla", "Cor"], opNomePh: "nome do rótulo", opNomeAria: "Nome do rótulo", teclaAria: "Tecla", corAria: "Cor",
+    removerX: n => `Remover ${n}`,
+    cores: { verde: "Verde", vermelho: "Vermelho", amarelo: "Amarelo", azul: "Azul", cinza: "Cinza" },
+    sessaoInfo: (f, t, d) => `${f} de ${t} respondidos, em ${d}`, salvaInfo: (a, f, t, d) => `${a}, ${f} de ${t} respondidos, em ${d}`,
+    continuarComo: n => `Continuar como ${n}`, apagarSessao: "Apagar",
+    confirmApagarSessao: n => `Apagar as respostas de ${n} neste navegador? Baixe o CSV antes, se quiser guardar.`,
+    erroAbrir: (n, m) => `Não deu para abrir ${n}. ${m}`, semItens: "O arquivo não tem itens.", semColunas: "Não achei colunas nesse arquivo.",
+    cabecalho: "O arquivo precisa de uma linha de cabeçalho e pelo menos uma linha de dados.",
+    jsonLista: "Não achei uma lista de itens nesse JSON.", jsonlLinha: i => `A linha ${i} do JSONL não é um JSON válido.`,
+    jsonErro: m => `O JSON não abriu: ${m}`,
+    xls: "Esse é o formato antigo do Excel (.xls). Abra no Excel ou no LibreOffice e salve como .xlsx.",
+    xlsxZip: "O arquivo não é um XLSX válido.", xlsxSemPlanilha: "Nenhuma planilha do arquivo tem cabeçalho e pelo menos uma linha de dados.",
+    xlsxNavegador: "Este navegador não abre XLSX; atualize-o ou salve o arquivo como CSV.",
+    xlsxCompressao: "O XLSX usa uma compressão que esta página não lê; salve de novo no Excel ou no LibreOffice.",
+    semColunaTela: "Marque pelo menos uma coluna para aparecer na tela.",
+    idRepetido: c => `A coluna "${c}" tem valores repetidos ou vazios; use o número da linha.`,
+    doisRotulos: "Ponha pelo menos dois rótulos.", rotuloSemNome: "Há um rótulo sem nome.",
+    rotuloDuplo: n => `O rótulo "${n}" aparece duas vezes.`, teclaDupla: (k, a, b) => `A tecla ${k} está em "${a}" e em "${b}".`,
+    semNome: "Ponha o nome de quem anota.", salvoAs: h => `Salvo neste navegador às ${h}`,
+    naoSalvou: "Este navegador não deixou salvar: baixe o progresso antes de fechar.", anotandoComo: n => `Anotando como ${n}`,
+    navegam: "navegam", vazio: "(vazio)", linhaN: id => `Linha ${id}`, posDe: (p, n) => `${p} de ${n}`,
+    respondidos: (f, n) => `<strong>${f}</strong> de ${n} respondidos`, fimTudo: "Tudo respondido.", fimLista: "Você chegou ao fim da lista.",
+    fimTextoTudo: n => `Os ${n} itens têm resposta. Baixe o CSV anotado e mande para quem vai analisar.`,
+    fimTextoParcial: (f, n) => `${f} de ${n} itens têm resposta; ${n - f} ficaram sem. O CSV sai com o que já foi respondido.`,
+    ultimo: (i, r) => `Último: ${i}, ${r}`, nomeResumo: (n, ops) => `${n} itens. Rótulos: ${ops}.`, teclaX: k => `tecla ${k}`,
+    importarInvalido: "Esse arquivo não é um progresso do Anotador.",
+    importarOutro: a => `Esse progresso é de ${a}, que não é igual ao aberto. Importar mesmo assim? Só entram as respostas dos itens com a mesma identificação.`,
+    importarTrocar: (n, f) => `${n} já tem ${f} respostas neste navegador. Trocar pelas do arquivo?`,
+    jaGerada: "Esta já é uma página gerada; gere a partir do Anotador original.",
+    confirmApagar: n => `Apagar todas as respostas de ${n} neste arquivo? Baixe o CSV antes, se quiser guardar.`,
+    local: "pt-BR"
+  },
+  en: {
+    trocarIdioma: "Português", codigo: "Source", chamada: "Label any dataset, one key per item.",
+    chamadaTexto: "Open a file, choose the columns to read and press a key for each row.",
+    fato1: "<strong>XLSX</strong> with every sheet, <strong>CSV</strong>, TSV, <strong>JSON</strong> and JSONL",
+    fato2: "Runs in your browser. <strong>Nothing is uploaded</strong>, and it works offline",
+    fato3: "<strong>Your own labels</strong>, or presets for moderation, sentiment, relevance and ratings",
+    fato4: "Get the same table back with a <strong>label column</strong>, ready for Excel or pandas",
+    soltar: "<strong>Choose a file</strong> or drop it here", amostra: "Try it with sample data",
+    salvasTitulo: "Labeling saved in this browser", salvasDica: "To continue one of them, open the same file again.",
+    trocarArquivo: "Change file", planilhaRotulo: "Sheet", sessoesTitulo: "This file already has labels in this browser",
+    telaTitulo: "What shows on screen",
+    telaDica: "Tick the columns the annotator should see, in display order. Unticked columns are hidden but still go into the CSV you download.",
+    idRotulo: "Item identifier", aleatorio: "Shuffled order", notas: "Notes box", rotulosTitulo: "Labels",
+    rotulosDica: "The buttons shown for each item. The key is the shortcut; the chosen label goes to the <code>label</code> column of the CSV.",
+    modeloRotulo: "Preset", modeloProprio: "Custom labels", maisRotulo: "Label", quemAnota: "Annotator", seuNome: "your name",
+    comecar: "Start labeling", gerar: "Make a page for another annotator", importar: "Import progress",
+    gerarDica: "The generated page is a single HTML file with this data, columns and labels inside: whoever gets it opens it, types their name and labels.",
+    nomeSessoes: "Continue a labeling session from this browser", anterior: "Previous", proxima: "Next", pular: "Next unlabeled",
+    baixarCsv: "Download labeled CSV", fimPular: "Go to the first unlabeled", fimInicio: "Back to the start", irPara: "Go to", ir: "Go",
+    baixarProg: "Download progress", apagar: "Delete my labels", configuracao: "Settings", trocarAnotador: "Switch annotator",
+    notaPh: "Note (optional)",
+    delims: { ",": "comma", ";": "semicolon", "\t": "tab", "|": "pipe" },
+    resumo: (n, c, f, s) => `${n} items, ${c} columns, ${f}` + (s ? ` separated by ${s}` : ""),
+    planilhaOpcao: (nome, n) => `${nome} (${n} rows)`, todasJuntas: n => `All sheets together (${n} rows)`,
+    todasPlanilhas: "all sheets", todasSlug: "all-sheets",
+    colCabeca: ["Column", "Name on screen", "Example", "Order"], amostraVazia: "(empty in the first rows)",
+    nomeNaTela: c => `Name on screen for ${c}`, subir: "Move up", descer: "Move down", numLinha: "Row number", colunaX: c => `Column ${c}`,
+    idAviso: c => `Column ${c} has repeated or empty values; using the row number.`,
+    opCabeca: ["Label", "Key", "Color"], opNomePh: "label name", opNomeAria: "Label name", teclaAria: "Key", corAria: "Color",
+    removerX: n => `Remove ${n}`,
+    cores: { verde: "Green", vermelho: "Red", amarelo: "Yellow", azul: "Blue", cinza: "Gray" },
+    sessaoInfo: (f, t, d) => `${f} of ${t} labeled, on ${d}`, salvaInfo: (a, f, t, d) => `${a}, ${f} of ${t} labeled, on ${d}`,
+    continuarComo: n => `Continue as ${n}`, apagarSessao: "Delete",
+    confirmApagarSessao: n => `Delete ${n}'s labels from this browser? Download the CSV first if you want to keep them.`,
+    erroAbrir: (n, m) => `Could not open ${n}. ${m}`, semItens: "The file has no items.", semColunas: "No columns found in this file.",
+    cabecalho: "The file needs a header row and at least one data row.",
+    jsonLista: "No list of items found in this JSON.", jsonlLinha: i => `Line ${i} of the JSONL is not valid JSON.`,
+    jsonErro: m => `The JSON did not parse: ${m}`,
+    xls: "This is the old Excel format (.xls). Open it in Excel or LibreOffice and save it as .xlsx.",
+    xlsxZip: "This is not a valid XLSX file.", xlsxSemPlanilha: "No sheet in this file has a header row and at least one data row.",
+    xlsxNavegador: "This browser cannot open XLSX; update it or save the file as CSV.",
+    xlsxCompressao: "This XLSX uses a compression this page cannot read; save it again in Excel or LibreOffice.",
+    semColunaTela: "Tick at least one column to show on screen.",
+    idRepetido: c => `Column "${c}" has repeated or empty values; use the row number.`,
+    doisRotulos: "Add at least two labels.", rotuloSemNome: "One label has no name.",
+    rotuloDuplo: n => `The label "${n}" appears twice.`, teclaDupla: (k, a, b) => `The key ${k} is used by "${a}" and "${b}".`,
+    semNome: "Type the annotator's name.", salvoAs: h => `Saved in this browser at ${h}`,
+    naoSalvou: "This browser would not save: download your progress before closing.", anotandoComo: n => `Labeling as ${n}`,
+    navegam: "move", vazio: "(empty)", linhaN: id => `Row ${id}`, posDe: (p, n) => `${p} of ${n}`,
+    respondidos: (f, n) => `<strong>${f}</strong> of ${n} labeled`, fimTudo: "Everything is labeled.", fimLista: "You reached the end of the list.",
+    fimTextoTudo: n => `All ${n} items are labeled. Download the labeled CSV and send it to whoever will analyze it.`,
+    fimTextoParcial: (f, n) => `${f} of ${n} items are labeled; ${n - f} are not. The CSV includes what is labeled so far.`,
+    ultimo: (i, r) => `Last: ${i}, ${r}`, nomeResumo: (n, ops) => `${n} items. Labels: ${ops}.`, teclaX: k => `key ${k}`,
+    importarInvalido: "This file is not an Anotador progress file.",
+    importarOutro: a => `This progress belongs to ${a}, which differs from the open file. Import anyway? Only items with the same identifier are filled in.`,
+    importarTrocar: (n, f) => `${n} already has ${f} labels in this browser. Replace them with the ones in the file?`,
+    jaGerada: "This is already a generated page; generate from the original Anotador.",
+    confirmApagar: n => `Delete all of ${n}'s labels for this file? Download the CSV first if you want to keep them.`,
+    local: "en-US"
+  }
+};
+let LANG = (() => {
+  try { const s = localStorage.getItem(PREF + "@lang"); if (s === "pt" || s === "en") return s; } catch (e) {}
+  return /^pt\b/i.test(navigator.language || "") ? "pt" : "en";
+})();
+function t(chave, ...args) { const v = TXT[LANG][chave]; return typeof v === "function" ? v(...args) : v; }
+const opcoesDe = (m, lang = LANG) => m[lang].map((nome, i) => ({ nome, tecla: String(i + 1), cor: m.cores[i] }));
+const opcoesPadrao = (lang = LANG) => opcoesDe(MODELOS[0], lang);
+const modeloDe = (opcoes, lang = LANG) => { const s = JSON.stringify(opcoes); return MODELOS.findIndex(m => JSON.stringify(opcoesDe(m, lang)) === s); };
+
+const $ = id => document.getElementById(id);
+function el(tag, props, ...filhos) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(props || {})) {
+    if (v === undefined || v === null) continue;
+    if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else if (k in e) e[k] = v;
+    else e.setAttribute(k, v);
+  }
+  for (const f of filhos.flat()) if (f !== null && f !== undefined && f !== false) e.append(f);
+  return e;
+}
+function ic(nome) {
+  const s = document.createElementNS(SVGNS, "svg"), u = document.createElementNS(SVGNS, "use");
+  s.setAttribute("class", "ic"); s.setAttribute("aria-hidden", "true");
+  u.setAttribute("href", "#i-" + nome); s.append(u);
+  return s;
+}
+const usarIcone = (svg, nome) => svg.querySelector("use").setAttribute("href", "#i-" + nome);
+
+let S = null;        // dados abertos: arquivo, formato, delim, colunas, linhas, hash, base, config, pacote, planilhas, planilha
+let sessao = null;   // ordem, pos, respostas, tempo
+let anotador = "";
+let indice = new Map();
+let tela = "";
+let marca = null;
+let tNota = null;
+const C = () => S.config;
+
+/* ---------- utilidades ---------- */
+function cyrb53(x, seed = 0) {
+  let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+  const texto = typeof x === "string";
+  for (let i = 0, ch; i < x.length; i++) {
+    ch = texto ? x.charCodeAt(i) : x[i];
+    h1 = Math.imul(h1 ^ ch, 2654435761);
+    h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507); h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507); h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
+}
+function mulberry32(a) {
+  return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
+function embaralhar(lista, semente) {
+  const a = lista.slice(), r = mulberry32(semente);
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+const novaSemente = () => Math.floor(Math.random() * 2 ** 31);
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const slug = s => (String(s || "").normalize("NFD").replace(ACENTOS, "").replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase() || "anotador");
+const extensao = nome => ((nome.match(/\.([^.]+)$/) || [])[1] || "").toLowerCase();
+const nomePlanilha = () => S.planilha === "*" ? t("todasPlanilhas") : S.planilha;
+const nomeExibido = () => S.formato === "xlsx" && S.planilha ? `${S.arquivo} (${nomePlanilha()})` : S.arquivo;
+const baseNome = () => S.arquivo.replace(/\.[^.]+$/, "") + (S.formato === "xlsx" && S.planilha ? "-" + (S.planilha === "*" ? t("todasSlug") : slug(S.planilha)) : "");
+const iconeFormato = f => ({ xlsx: "sheet", json: "braces", jsonl: "braces" })[f] || "file-text";
+const dataCurta = iso => { try { return new Date(iso).toLocaleString(t("local"), { dateStyle: "short", timeStyle: "short" }); } catch (e) { return ""; } };
+function lerLS(k) { try { const s = localStorage.getItem(k); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
+function gravarLS(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+function apagarLS(k) { try { localStorage.removeItem(k); } catch (e) {} }
+function chavesLS() { const ks = []; try { for (let i = 0; i < localStorage.length; i++) ks.push(localStorage.key(i)); } catch (e) {} return ks; }
+function baixar(conteudo, nome, tipo) {
+  const a = el("a", { href: URL.createObjectURL(new Blob([conteudo], { type: tipo })), download: nome });
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+function mostrarErro(id, msg) { const e = $(id); e.textContent = msg; e.hidden = !msg; }
+
+/* ---------- idioma ---------- */
+function aplicarIdioma() {
+  document.documentElement.lang = t("local");
+  for (const e of document.querySelectorAll("[data-i18n]")) e.textContent = t(e.dataset.i18n);
+  for (const e of document.querySelectorAll("[data-i18n-html]")) e.innerHTML = t(e.dataset.i18nHtml);
+  for (const e of document.querySelectorAll("[data-i18n-ph]")) e.placeholder = t(e.dataset.i18nPh);
+  $("idioma").querySelector("span").textContent = t("trocarIdioma");
+  $("an-nota").placeholder = t("notaPh");
+}
+function trocarIdioma() {
+  const antes = LANG;
+  LANG = LANG === "pt" ? "en" : "pt";
+  try { localStorage.setItem(PREF + "@lang", LANG); } catch (e) {}
+  aplicarIdioma();
+  /* rótulos ainda num modelo do idioma anterior acompanham a troca, só antes da primeira resposta:
+     depois disso, trocar o nome deixaria as respostas já dadas sem botão correspondente */
+  if (S && !S.pacote && tela === "config" && !sessoesDe(S.base).length) {
+    const m = modeloDe(C().opcoes, antes);
+    if (m >= 0) C().opcoes = opcoesDe(MODELOS[m]);
+  }
+  if (tela === "carregar") telaCarregar();
+  else if (tela === "config") telaConfig();
+  else if (tela === "nome") telaNome();
+  else if (tela === "anotar") { pararRelogio(); telaAnotar(); }
+}
+
+/* ---------- leitura do arquivo ---------- */
+function decodificar(buf) {
+  let txt = new TextDecoder("utf-8").decode(buf);
+  if (txt.includes(SUBSTITUICAO)) txt = new TextDecoder("windows-1252").decode(buf);
+  if (txt.charCodeAt(0) === 0xFEFF) txt = txt.slice(1);
+  return txt;
+}
+function detectarDelim(txt) {
+  const cont = { ",": 0, ";": 0, "\t": 0, "|": 0 };
+  let dentro = false;
+  for (let i = 0; i < txt.length && i < 200000; i++) {
+    const c = txt[i];
+    if (c === '"') dentro = !dentro;
+    else if (!dentro) { if (c === "\n") break; if (c in cont) cont[c]++; }
+  }
+  let melhor = ",";
+  for (const c of Object.keys(cont)) if (cont[c] > cont[melhor]) melhor = c;
+  return melhor;
+}
+function lerCSV(txt, d) {
+  const out = []; let linha = []; let i = 0; const n = txt.length;
+  if (!n) return out;
+  while (true) {
+    let valor;
+    if (txt[i] === '"') {
+      let j = i + 1, ini = j; const partes = [];
+      while (true) {
+        const k = txt.indexOf('"', j);
+        if (k < 0) { partes.push(txt.slice(ini)); j = n; break; }
+        if (txt[k + 1] === '"') { partes.push(txt.slice(ini, k + 1)); j = k + 2; ini = j; continue; }
+        partes.push(txt.slice(ini, k)); j = k + 1; break;
+      }
+      const resto = j;
+      while (j < n && txt[j] !== d && txt[j] !== "\n" && txt[j] !== "\r") j++;
+      valor = partes.join("") + txt.slice(resto, j);
+      i = j;
+    } else {
+      let j = i;
+      while (j < n && txt[j] !== d && txt[j] !== "\n" && txt[j] !== "\r") j++;
+      valor = txt.slice(i, j);
+      i = j;
+    }
+    linha.push(valor);
+    if (i >= n) { out.push(linha); break; }
+    if (txt[i] === d) { i++; if (i >= n) { linha.push(""); out.push(linha); break; } continue; }
+    i += (txt[i] === "\r" && txt[i + 1] === "\n") ? 2 : 1;
+    out.push(linha); linha = [];
+    if (i >= n) break;
+  }
+  return out;
+}
+/* matriz de texto (CSV ou planilha): a primeira linha não vazia é o cabeçalho */
+function deMatriz(matriz, formato, delim) {
+  const m = matriz.filter(l => l.some(c => String(c).trim() !== ""));
+  if (m.length < 2) throw new Error(t("cabecalho"));
+  let largura = 0;
+  for (const l of m) if (l.length > largura) largura = l.length;
+  const colunas = [], usadas = new Set();
+  for (let i = 0; i < largura; i++) {
+    let nome = String(m[0][i] ?? "").trim() || `coluna_${i + 1}`;
+    const base = nome; let k = 2;
+    while (usadas.has(nome)) nome = `${base}_${k++}`;
+    usadas.add(nome); colunas.push(nome);
+  }
+  const linhas = m.slice(1).map(l => { const o = {}; colunas.forEach((c, i) => { o[c] = l[i] ?? ""; }); return o; });
+  return { formato, delim, colunas, linhas };
+}
+function deObjetos(lista, formato) {
+  const linhas = lista.map(x => (x && typeof x === "object" && !Array.isArray(x)) ? x : { valor: x });
+  const colunas = [], vistas = new Set();
+  for (const o of linhas) for (const k of Object.keys(o)) if (!vistas.has(k)) { vistas.add(k); colunas.push(k); }
+  return { formato, delim: null, colunas, linhas };
+}
+function deJSON(v) {
+  if (Array.isArray(v)) return deObjetos(v, "json");
+  if (v && typeof v === "object") {
+    const k = Object.keys(v).find(k => Array.isArray(v[k]) && v[k].length && v[k].every(x => x && typeof x === "object" && !Array.isArray(x)));
+    if (k) return deObjetos(v[k], "json");
+  }
+  throw new Error(t("jsonLista"));
+}
+function deJSONL(txt) {
+  const lista = [];
+  txt.split(/\r?\n/).forEach((l, i) => {
+    if (!l.trim()) return;
+    try { lista.push(JSON.parse(l)); } catch (e) { throw new Error(t("jsonlLinha", i + 1)); }
+  });
+  return deObjetos(lista, "jsonl");
+}
+function interpretar(nome, txt) {
+  const ext = extensao(nome);
+  const ini = txt.trimStart()[0];
+  if (ext === "jsonl" || ext === "ndjson") return deJSONL(txt);
+  if (ext === "json" || ((ext !== "csv" && ext !== "tsv") && (ini === "[" || ini === "{"))) {
+    let v;
+    try { v = JSON.parse(txt); } catch (e) {
+      try { return deJSONL(txt); } catch (e2) { throw new Error(t("jsonErro", e.message)); }
+    }
+    return deJSON(v);
+  }
+  const d = ext === "tsv" ? "\t" : detectarDelim(txt);
+  return deMatriz(lerCSV(txt, d), "csv", d);
+}
+
+/* ---------- XLSX: zip com XML dentro, lido sem biblioteca ---------- */
+async function lerZip(buf) {
+  const dv = new DataView(buf), u8 = new Uint8Array(buf);
+  let fimDir = -1;
+  for (let i = buf.byteLength - 22; i >= Math.max(0, buf.byteLength - 65557); i--) if (dv.getUint32(i, true) === 0x06054b50) { fimDir = i; break; }
+  if (fimDir < 0) throw new Error(t("xlsxZip"));
+  const total = dv.getUint16(fimDir + 10, true);
+  let p = dv.getUint32(fimDir + 16, true);
+  const dec = new TextDecoder(), entradas = new Map();
+  for (let k = 0; k < total && p + 46 <= buf.byteLength; k++) {
+    if (dv.getUint32(p, true) !== 0x02014b50) break;
+    const metodo = dv.getUint16(p + 10, true), tamanho = dv.getUint32(p + 20, true);
+    const lNome = dv.getUint16(p + 28, true), lExtra = dv.getUint16(p + 30, true), lComent = dv.getUint16(p + 32, true);
+    const local = dv.getUint32(p + 42, true);
+    entradas.set(dec.decode(u8.subarray(p + 46, p + 46 + lNome)), { metodo, tamanho, local });
+    p += 46 + lNome + lExtra + lComent;
+  }
+  return async nome => {
+    const e = entradas.get(nome);
+    if (!e) return null;
+    const ini = e.local + 30 + dv.getUint16(e.local + 26, true) + dv.getUint16(e.local + 28, true);
+    const dados = u8.subarray(ini, ini + e.tamanho);
+    if (e.metodo === 0) return dec.decode(dados);
+    if (e.metodo !== 8) throw new Error(t("xlsxCompressao"));
+    let fluxo;
+    try { fluxo = new Blob([dados]).stream().pipeThrough(new DecompressionStream("deflate-raw")); }
+    catch (err) { throw new Error(t("xlsxNavegador")); }
+    return new Response(fluxo).text();
+  };
+}
+const filhos = (e, nome) => e ? Array.from(e.children).filter(x => x.localName === nome) : [];
+const todos = (doc, nome) => doc ? Array.from(doc.getElementsByTagNameNS("*", nome)) : [];
+function colunaIdx(ref) {
+  let n = 0;
+  for (const ch of ref) { const c = ch.toUpperCase().charCodeAt(0); if (c >= 65 && c <= 90) n = n * 26 + (c - 64); else break; }
+  return n - 1;
+}
+function ehFormatoData(id, proprios) {
+  if ((id >= 14 && id <= 22) || (id >= 45 && id <= 47)) return true;
+  const f = proprios[id];
+  if (!f) return false;
+  const limpo = f.replace(/"[^"]*"/g, "").replace(/\[[^\]]*\]/g, "").replace(/\\./g, "").replace(/[_*]./g, "");
+  return /[dmyhs]/i.test(limpo);
+}
+function serialParaData(n, de1904) {
+  const seg = Math.round((n - (de1904 ? 24107 : 25569)) * 86400);
+  const d = new Date(seg * 1000), p = x => String(x).padStart(2, "0");
+  const data = `${d.getUTCFullYear()}-${p(d.getUTCMonth() + 1)}-${p(d.getUTCDate())}`;
+  const hora = `${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())}`;
+  if (n < 1) return hora;
+  return Number.isInteger(n) ? data : `${data} ${hora}`;
+}
+async function deXLSX(buf) {
+  if (typeof DecompressionStream === "undefined") throw new Error(t("xlsxNavegador"));
+  const ler = await lerZip(buf);
+  const xml = async nome => { const s = await ler(nome); return s === null ? null : new DOMParser().parseFromString(s, "application/xml"); };
+  const livro = await xml("xl/workbook.xml");
+  if (!livro) throw new Error(t("xlsxZip"));
+  const de1904 = todos(livro, "workbookPr").some(e => /^(1|true)$/i.test(e.getAttribute("date1904") || ""));
+  const alvos = {};
+  for (const r of todos(await xml("xl/_rels/workbook.xml.rels"), "Relationship")) alvos[r.getAttribute("Id")] = r.getAttribute("Target");
+  const textoDe = no => todos(no, "t").filter(x => x.parentNode.localName !== "rPh").map(x => x.textContent).join("");
+  const compartilhados = todos(await xml("xl/sharedStrings.xml"), "si").map(textoDe);
+  const estilos = await xml("xl/styles.xml");
+  const proprios = {};
+  for (const f of todos(estilos, "numFmt")) proprios[f.getAttribute("numFmtId")] = f.getAttribute("formatCode") || "";
+  const ehData = filhos(todos(estilos, "cellXfs")[0], "xf").map(xf => ehFormatoData(+xf.getAttribute("numFmtId"), proprios));
+  const planilhas = [];
+  for (const folha of todos(livro, "sheet")) {
+    const rid = folha.getAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships", "id") || folha.getAttribute("r:id");
+    const alvo = alvos[rid];
+    if (!alvo) continue;
+    const doc = await xml(alvo.startsWith("/") ? alvo.slice(1) : "xl/" + alvo.replace(/^\.\//, ""));
+    if (!doc) continue;
+    const matriz = [];
+    for (const row of todos(doc, "row")) {
+      const r = (parseInt(row.getAttribute("r"), 10) || matriz.length + 1) - 1;
+      const linha = [];
+      let col = 0;
+      for (const c of filhos(row, "c")) {
+        const ref = c.getAttribute("r");
+        if (ref) col = colunaIdx(ref);
+        const tipo = c.getAttribute("t") || "n";
+        const v = filhos(c, "v")[0];
+        let valor = v ? v.textContent : "";
+        if (tipo === "s") valor = compartilhados[+valor] ?? "";
+        else if (tipo === "inlineStr") valor = textoDe(filhos(c, "is")[0]);
+        else if (tipo === "b") valor = valor === "1" ? "TRUE" : valor === "0" ? "FALSE" : valor;
+        else if (tipo === "n" && valor !== "" && ehData[+(c.getAttribute("s") || 0)] && isFinite(+valor)) valor = serialParaData(+valor, de1904);
+        linha[col] = valor;
+        col++;
+      }
+      matriz[r] = linha;
+    }
+    const densa = [];
+    for (let i = 0; i < matriz.length; i++) { const l = matriz[i] || []; const d = []; for (let j = 0; j < l.length; j++) d.push(l[j] ?? ""); densa.push(d); }
+    planilhas.push({ nome: folha.getAttribute("name") || `Sheet${planilhas.length + 1}`, matriz: densa });
+  }
+  return planilhas;
+}
+
+/* ---------- configuração: colunas e rótulos ---------- */
+function idsUnicos(d, c) {
+  const vistos = new Set();
+  for (const l of d.linhas) {
+    const v = l[c];
+    if (v === undefined || v === null || typeof v === "object" || String(v).trim() === "") return false;
+    const k = String(v);
+    if (vistos.has(k)) return false;
+    vistos.add(k);
+  }
+  return true;
+}
+function acharId(d) {
+  const nomes = ["id", "_id", "uid", "idx", "index", "item_id", "id_item", "item", "key", "chave"];
+  for (const c of d.colunas) if (nomes.includes(c.toLowerCase()) && idsUnicos(d, c)) return c;
+  return "";
+}
+function configPadrao() {
+  const idCol = acharId(S);
+  return { campos: S.colunas.map(c => ({ coluna: c, nome: c, mostrar: c !== idCol })), idColuna: idCol, aleatorio: false, notas: false, opcoes: opcoesPadrao() };
+}
+function mesclarConfig(cfg) {
+  const base = configPadrao();
+  if (!cfg || typeof cfg !== "object") return base;
+  const conhecidas = new Set(S.colunas);
+  const campos = (Array.isArray(cfg.campos) ? cfg.campos : [])
+    .filter(c => c && conhecidas.has(c.coluna))
+    .map(c => ({ coluna: c.coluna, nome: String(c.nome ?? c.coluna), mostrar: !!c.mostrar }));
+  const ja = new Set(campos.map(c => c.coluna));
+  for (const c of base.campos) if (!ja.has(c.coluna)) campos.push(c);
+  let idColuna = typeof cfg.idColuna === "string" ? cfg.idColuna : base.idColuna;
+  if (idColuna && !(conhecidas.has(idColuna) && idsUnicos(S, idColuna))) idColuna = "";
+  const opcoes = Array.isArray(cfg.opcoes) && cfg.opcoes.length
+    ? cfg.opcoes.map(o => ({ nome: String(o.nome ?? ""), tecla: String(o.tecla ?? "").slice(0, 1).toLowerCase(), cor: CORES.includes(o.cor) ? o.cor : "cinza" }))
+    : opcoesPadrao();
+  return { campos, idColuna, aleatorio: !!cfg.aleatorio, notas: !!cfg.notas, opcoes };
+}
+function validar() {
+  if (!C().campos.some(x => x.mostrar)) return t("semColunaTela");
+  if (C().idColuna && !idsUnicos(S, C().idColuna)) return t("idRepetido", C().idColuna);
+  if (C().opcoes.length < 2) return t("doisRotulos");
+  const nomes = new Set(), teclas = new Map();
+  for (const o of C().opcoes) {
+    o.nome = o.nome.trim();
+    if (!o.nome) return t("rotuloSemNome");
+    if (nomes.has(o.nome)) return t("rotuloDuplo", o.nome);
+    nomes.add(o.nome);
+    o.tecla = (o.tecla || "").trim().toLowerCase();
+    if (o.tecla) {
+      if (teclas.has(o.tecla)) return t("teclaDupla", o.tecla.toUpperCase(), teclas.get(o.tecla), o.nome);
+      teclas.set(o.tecla, o.nome);
+    }
+  }
+  return "";
+}
+function teclaLivre() {
+  const usadas = new Set(C().opcoes.map(o => o.tecla));
+  for (const k of "123456789abcdefghijklmnopqrstuvwxyz") if (!usadas.has(k)) return k;
+  return "";
+}
+function renderModelo() {
+  const sel = $("cfg-modelo");
+  let atual = modeloDe(C().opcoes);
+  if (atual < 0) atual = modeloDe(C().opcoes, LANG === "pt" ? "en" : "pt");   // modelo do outro idioma, já em uso
+  sel.replaceChildren(el("option", { value: "", textContent: t("modeloProprio") }),
+    ...GRUPOS.map(g => el("optgroup", { label: g.nome[LANG] },
+      ...g.modelos.map(m => el("option", { value: String(MODELOS.indexOf(m)), textContent: nomeModelo(m) })))));
+  sel.value = atual >= 0 ? String(atual) : "";
+}
+function renderOpcoesCfg() {
+  const ops = C().opcoes;
+  $("cfg-opcoes").replaceChildren(
+    el("div", { className: "opcao-linha cabeca" }, ...t("opCabeca").map(x => el("span", { textContent: x })), el("span")),
+    ...ops.map((o, i) => {
+      const bolinha = el("span", { className: "bolinha", "data-cor": o.cor });
+      return el("div", { className: "opcao-linha" },
+        el("input", { type: "text", value: o.nome, placeholder: t("opNomePh"), "aria-label": t("opNomeAria"), oninput: e => { o.nome = e.target.value; renderModelo(); } }),
+        el("input", { type: "text", className: "tecla", value: o.tecla, maxLength: 2, "aria-label": t("teclaAria"), oninput: e => { e.target.value = e.target.value.slice(-1); o.tecla = e.target.value.toLowerCase(); renderModelo(); } }),
+        el("div", { className: "cor" }, bolinha,
+          el("select", { "aria-label": t("corAria"), onchange: e => { o.cor = e.target.value; bolinha.dataset.cor = o.cor; renderModelo(); } },
+            ...CORES.map(v => el("option", { value: v, textContent: t("cores")[v], selected: v === o.cor })))),
+        el("button", { type: "button", className: "pequeno", title: t("removerX", o.nome), "aria-label": t("removerX", o.nome), onclick: () => { ops.splice(i, 1); renderOpcoesCfg(); } }, ic("x"))
+      );
+    }));
+  renderModelo();
+}
+
+/* ---------- sessões guardadas ---------- */
+const norm = nome => nome.trim().toLowerCase();
+const chave = () => PREF + S.base + ":" + norm(anotador);
+function sessoesDe(base) {
+  return chavesLS().filter(k => k && k.startsWith(PREF + base + ":"))
+    .map(k => ({ k, v: lerLS(k) })).filter(x => x.v && x.v.sessao)
+    .sort((a, b) => String(b.v.atualizado).localeCompare(String(a.v.atualizado)));
+}
+function ultimoNome() { try { return localStorage.getItem(PREF + "@nome") || ""; } catch (e) { return ""; } }
+function lembrarNome(n) { try { localStorage.setItem(PREF + "@nome", n); } catch (e) {} }
+function listaSessoes(ul, cartao, aoContinuar) {
+  const ss = sessoesDe(S.base);
+  cartao.hidden = !ss.length;
+  ul.replaceChildren(...ss.map(({ k, v }) => el("li", {},
+    el("span", { className: "nome-sessao" }, ic("user"), el("strong", { textContent: v.anotador }),
+      el("span", { className: "dica", style: "margin:0", textContent: t("sessaoInfo", v.feitos, v.total, dataCurta(v.atualizado)) })),
+    el("span", { className: "botoes" },
+      el("button", { className: "principal pequeno", onclick: () => aoContinuar(v) }, ic("play"), t("continuarComo", v.anotador)),
+      el("button", { className: "pequeno perigo", onclick: () => {
+        if (!confirm(t("confirmApagarSessao", v.anotador))) return;
+        apagarLS(k); listaSessoes(ul, cartao, aoContinuar);
+      } }, ic("trash-2"), t("apagarSessao")))
+  )));
+}
+
+/* ---------- telas ---------- */
+function mostrarTela(nova) {
+  tela = nova;
+  for (const s of ["carregar", "config", "nome", "anotar"]) $("tela-" + s).hidden = s !== nova;
+  const anotando = nova === "anotar";
+  $("barra-fundo").hidden = !anotando;
+  $("progresso").hidden = !anotando;
+  $("contexto").hidden = !S;
+  if (S) {
+    usarIcone($("ctx-ic"), iconeFormato(S.formato));
+    $("ctx-arquivo").textContent = S.arquivo;
+    const chip = $("ctx-planilha");
+    chip.hidden = !(S.formato === "xlsx" && S.planilha);
+    if (!chip.hidden) chip.querySelector("span").textContent = nomePlanilha();
+  }
+  window.scrollTo(0, 0);
+}
+
+function telaCarregar() {
+  S = null; sessao = null;
+  mostrarTela("carregar");
+  mostrarErro("erro-carregar", "");
+  const salvas = chavesLS().filter(k => k && k.startsWith(PREF) && !k.startsWith(PREF + "@"))
+    .map(k => lerLS(k)).filter(v => v && v.sessao)
+    .sort((a, b) => String(b.atualizado).localeCompare(String(a.atualizado)));
+  $("salvas").hidden = !salvas.length;
+  $("lista-salvas").replaceChildren(...salvas.map(v => el("li", {},
+    el("span", { className: "nome-sessao" }, ic("file-text"), el("strong", { textContent: v.arquivo }),
+      el("span", { className: "dica", style: "margin:0", textContent: t("salvaInfo", v.anotador, v.feitos, v.total, dataCurta(v.atualizado)) }))
+  )));
+}
+
+function usarPlanilha(sel) {
+  const ps = S.planilhas;
+  if (sel === "todas") {
+    let col = SAIDA.planilha;
+    while (ps.some(p => p.colunas.includes(col))) col += "_";
+    const colunas = [col], vistas = new Set(colunas);
+    for (const p of ps) for (const c of p.colunas) if (!vistas.has(c)) { vistas.add(c); colunas.push(c); }
+    S.colunas = colunas;
+    S.linhas = ps.flatMap(p => p.linhas.map(l => Object.assign({ [col]: p.nome }, l)));
+    S.planilha = "*";
+  } else {
+    S.colunas = ps[sel].colunas; S.linhas = ps[sel].linhas; S.planilha = ps[sel].nome;
+  }
+  S.sel = sel;
+  S.base = S.hash + "#" + (sel === "todas" ? "*" : sel);
+  const ss = sessoesDe(S.base);
+  S.config = ss.length ? mesclarConfig(ss[0].v.config) : configPadrao();
+}
+
+function abrirDados(d, extra) {
+  S = Object.assign({ pacote: false, planilha: null }, d, extra);
+  S.base = S.hash;
+  const ss = sessoesDe(S.base);
+  S.config = ss.length ? mesclarConfig(ss[0].v.config) : configPadrao();
+  telaConfig();
+}
+async function abrirArquivo(file) {
+  mostrarErro("erro-carregar", "");
+  try {
+    const buf = await file.arrayBuffer();
+    const u8 = new Uint8Array(buf);
+    const ext = extensao(file.name);
+    const zip = u8.length > 4 && u8[0] === 0x50 && u8[1] === 0x4B && u8[2] === 3 && u8[3] === 4;
+    if (ext === "xls" && !zip) throw new Error(t("xls"));
+    if (zip) {
+      const planilhas = [];
+      for (const p of await deXLSX(buf)) {
+        try { planilhas.push(Object.assign({ nome: p.nome }, deMatriz(p.matriz, "xlsx", null))); } catch (e) { /* planilha vazia ou só cabeçalho */ }
+      }
+      if (!planilhas.length) throw new Error(t("xlsxSemPlanilha"));
+      S = { arquivo: file.name, hash: cyrb53(u8), pacote: false, formato: "xlsx", delim: null, planilhas };
+      usarPlanilha(0);
+      telaConfig();
+    } else {
+      const texto = decodificar(buf);
+      const d = interpretar(file.name, texto);
+      if (!d.linhas.length) throw new Error(t("semItens"));
+      if (!d.colunas.length) throw new Error(t("semColunas"));
+      abrirDados(d, { arquivo: file.name, hash: cyrb53(texto) });
+    }
+  } catch (e) {
+    S = null;
+    mostrarErro("erro-carregar", t("erroAbrir", file.name, e.message));
+  }
+}
+function abrirAmostra() {
+  const a = AMOSTRA[LANG];
+  const linhas = a.linhas.map(l => Object.fromEntries(a.colunas.map((c, i) => [c, l[i]])));
+  abrirDados({ formato: "csv", delim: ",", colunas: a.colunas.slice(), linhas }, { arquivo: a.arquivo, hash: cyrb53(JSON.stringify(a)) });
+}
+
+function amostraDe(col) {
+  for (const l of S.linhas.slice(0, 60)) {
+    let v = l[col];
+    if (v === undefined || v === null || v === "") continue;
+    if (typeof v === "object") v = JSON.stringify(v);
+    return String(v).replace(/\s+/g, " ").slice(0, 140);
+  }
+  return t("amostraVazia");
+}
+
+function telaConfig() {
+  mostrarTela("config");
+  const nomesFmt = { csv: "CSV", jsonl: "JSONL", json: "JSON", xlsx: "XLSX" };
+  usarIcone($("cfg-arquivo-ic"), iconeFormato(S.formato));
+  $("cfg-arquivo").textContent = S.arquivo;
+  $("cfg-resumo").textContent = t("resumo", S.linhas.length, S.colunas.length, nomesFmt[S.formato], S.delim ? t("delims")[S.delim] : "");
+  const varias = S.formato === "xlsx" && S.planilhas && S.planilhas.length > 1;
+  $("cfg-planilha-caixa").hidden = !varias;
+  if (varias) {
+    const total = S.planilhas.reduce((a, p) => a + p.linhas.length, 0);
+    $("cfg-planilha").replaceChildren(
+      ...S.planilhas.map((p, i) => el("option", { value: String(i), textContent: t("planilhaOpcao", p.nome, p.linhas.length) })),
+      el("option", { value: "todas", textContent: t("todasJuntas", total) }));
+    $("cfg-planilha").value = String(S.sel);
+  }
+  listaSessoes($("cfg-lista-sessoes"), $("cfg-sessoes"), v => { S.config = mesclarConfig(v.config); comecar(v.anotador); });
+  renderCampos();
+  const sel = $("cfg-id");
+  sel.replaceChildren(el("option", { value: "", textContent: t("numLinha") }), ...S.colunas.map(c => el("option", { value: c, textContent: t("colunaX", c) })));
+  sel.value = C().idColuna;
+  $("cfg-id-aviso").textContent = "";
+  $("cfg-aleatorio").checked = C().aleatorio;
+  $("cfg-notas").checked = C().notas;
+  renderOpcoesCfg();
+  $("cfg-nome").value = anotador || ultimoNome();
+  mostrarErro("cfg-erro", "");
+}
+
+function renderCampos() {
+  const campos = C().campos;
+  const mover = (i, d) => { const j = i + d; [campos[i], campos[j]] = [campos[j], campos[i]]; renderCampos(); };
+  $("cfg-campos").replaceChildren(
+    el("div", { className: "campo-linha cabeca" }, ...t("colCabeca").map(x => el("span", { textContent: x }))),
+    ...campos.map((c, i) => {
+      const linha = el("div", { className: "campo-linha" + (c.mostrar ? "" : " escondida") },
+        el("label", {}, el("input", { type: "checkbox", checked: c.mostrar, onchange: e => { c.mostrar = e.target.checked; linha.classList.toggle("escondida", !c.mostrar); } }), el("code", { textContent: c.coluna })),
+        el("input", { type: "text", value: c.nome, "aria-label": t("nomeNaTela", c.coluna), oninput: e => { c.nome = e.target.value; } }),
+        el("span", { className: "amostra", textContent: amostraDe(c.coluna), title: amostraDe(c.coluna) }),
+        el("span", { className: "setas" },
+          el("button", { type: "button", className: "pequeno", title: t("subir"), "aria-label": t("subir"), disabled: i === 0, onclick: () => mover(i, -1) }, ic("arrow-up")),
+          el("button", { type: "button", className: "pequeno", title: t("descer"), "aria-label": t("descer"), disabled: i === campos.length - 1, onclick: () => mover(i, 1) }, ic("arrow-down"))));
+      return linha;
+    }));
+}
+
+function telaNome() {
+  mostrarTela("nome");
+  $("nome-titulo").textContent = nomeExibido();
+  $("nome-resumo").textContent = t("nomeResumo", S.linhas.length, C().opcoes.map(o => o.nome + (o.tecla ? ` (${t("teclaX", o.tecla.toUpperCase())})` : "")).join(", "));
+  listaSessoes($("nome-lista-sessoes"), $("nome-sessoes"), v => comecar(v.anotador));
+  $("nome-nome").value = anotador;
+  mostrarErro("nome-erro", "");
+}
+
+/* ---------- sessão ---------- */
+const idDe = i => C().idColuna ? String(S.linhas[i][C().idColuna]) : String(i + 1);
+const rotuloItem = id => C().idColuna ? `${C().idColuna} ${id}` : t("linhaN", id);
+const completo = id => !!(sessao.respostas[id] && sessao.respostas[id].rotulo);
+function contarFeitos() { let n = 0; for (const id of sessao.ordem) if (completo(id)) n++; return n; }
+function primeiraSemResposta(de) {
+  const N = sessao.ordem.length;
+  for (let k = 0; k < N; k++) { const p = (de + k) % N; if (!completo(sessao.ordem[p])) return p; }
+  return N;
+}
+function ajustarSessao() {
+  sessao.respostas = sessao.respostas || {};
+  sessao.tempo = sessao.tempo || {};
+  if (typeof sessao.idColuna === "string" && sessao.idColuna !== C().idColuna && Object.keys(sessao.respostas).length
+      && (sessao.idColuna === "" || (S.colunas.includes(sessao.idColuna) && idsUnicos(S, sessao.idColuna)))) {
+    C().idColuna = sessao.idColuna;
+  }
+  sessao.idColuna = C().idColuna;
+  const ids = S.linhas.map((_, i) => idDe(i));
+  indice = new Map(ids.map((id, i) => [id, i]));
+  if (!Array.isArray(sessao.ordem) || sessao.aleatorio !== C().aleatorio) {
+    sessao.semente = sessao.semente || novaSemente();
+    sessao.ordem = C().aleatorio ? embaralhar(ids, sessao.semente) : ids;
+    sessao.aleatorio = C().aleatorio;
+    sessao.pos = primeiraSemResposta(0);
+  } else {
+    const ordem = sessao.ordem.filter(id => indice.has(id)), tem = new Set(ordem);
+    for (const id of ids) if (!tem.has(id)) ordem.push(id);
+    sessao.ordem = ordem;
+  }
+  sessao.pos = clamp(sessao.pos | 0, 0, sessao.ordem.length);
+}
+function novaSessao() {
+  sessao = { respostas: {}, tempo: {}, pos: 0, inicio: new Date().toISOString(), semente: novaSemente(), aleatorio: C().aleatorio };
+  ajustarSessao();
+}
+function comecar(nome) {
+  const erroId = S.pacote ? "nome-erro" : "cfg-erro";
+  const err = validar();
+  if (err) { mostrarErro(erroId, err); return; }
+  nome = (nome || "").trim();
+  if (!nome) { mostrarErro(erroId, t("semNome")); $(S.pacote ? "nome-nome" : "cfg-nome").focus(); return; }
+  anotador = nome;
+  lembrarNome(nome);
+  const salvo = lerLS(chave());
+  if (salvo && salvo.sessao) { sessao = salvo.sessao; ajustarSessao(); }
+  else novaSessao();
+  salvar();
+  telaAnotar();
+}
+function salvar() {
+  clearTimeout(tNota);
+  if (!sessao) return;
+  const ok = gravarLS(chave(), { arquivo: nomeExibido(), total: S.linhas.length, feitos: contarFeitos(), anotador, config: C(), sessao, atualizado: new Date().toISOString() });
+  $("salvo").textContent = ok ? t("salvoAs", new Date().toLocaleTimeString(t("local"))) : t("naoSalvou");
+}
+
+/* ---------- anotar ---------- */
+function itemAtual() { return sessao && tela === "anotar" && sessao.pos < sessao.ordem.length ? sessao.ordem[sessao.pos] : null; }
+function pararRelogio() {
+  const id = itemAtual();
+  if (marca === null || !id) { marca = null; return; }
+  sessao.tempo[id] = Math.round(((sessao.tempo[id] || 0) + (performance.now() - marca) / 1000) * 10) / 10;
+  marca = null;
+}
+function iniciarRelogio() { marca = (itemAtual() && !document.hidden) ? performance.now() : null; }
+
+function telaAnotar() {
+  mostrarTela("anotar");
+  $("an-opcoes").replaceChildren(...C().opcoes.map(o => el("button", {
+    type: "button", className: "opcao", "data-cor": o.cor, "data-nome": o.nome, "aria-pressed": "false", onclick: () => responder(o.nome)
+  }, o.tecla ? el("kbd", { textContent: o.tecla.toUpperCase() }) : null, el("span", { textContent: o.nome }), ic("check"))));
+  $("an-atalhos").replaceChildren(
+    ...C().opcoes.filter(o => o.tecla).map(o => el("span", { className: "atalho" }, el("kbd", { textContent: o.tecla.toUpperCase() }), o.nome.toLowerCase())),
+    el("span", { className: "atalho" }, el("kbd", { textContent: "←" }), el("kbd", { textContent: "→" }), t("navegam")));
+  $("an-nota").hidden = !C().notas;
+  $("ir-config").querySelector("span").textContent = S.pacote ? t("trocarAnotador") : t("configuracao");
+  usarIcone($("ir-config").querySelector("svg"), S.pacote ? "user" : "settings-2");
+  $("ir-num").max = sessao.ordem.length;
+  $("ultimo").textContent = t("anotandoComo", anotador);
+  renderAnotar();
+}
+
+function renderValor(v) {
+  if (typeof v === "string") {
+    const s = v.trim();
+    if ((s[0] === "[" || s[0] === "{") && s.length < 3e6) { try { v = JSON.parse(s); } catch (e) {} }
+  }
+  if (v === undefined || v === null || v === "") return el("div", { className: "texto vazio", textContent: t("vazio") });
+  if (Array.isArray(v) && v.length && v.every(x => x && typeof x === "object" && ("role" in x || "from" in x || "speaker" in x) && ("content" in x || "text" in x || "value" in x))) {
+    return el("div", { className: "texto" }, ...v.map(x => {
+      const papel = String(x.role ?? x.from ?? x.speaker);
+      let conteudo = x.content ?? x.text ?? x.value;
+      if (Array.isArray(conteudo)) conteudo = conteudo.map(p => (p && typeof p === "object") ? (p.text ?? JSON.stringify(p)) : String(p)).join("\n");
+      else if (conteudo && typeof conteudo === "object") conteudo = JSON.stringify(conteudo, null, 2);
+      const usuario = /^(user|human|usuario|usuário)$/i.test(papel);
+      return el("div", { className: "turno" + (usuario ? " usuario" : "") }, el("div", { className: "turno-papel", textContent: papel }), el("div", { textContent: String(conteudo ?? "") }));
+    }));
+  }
+  if (typeof v === "object") return el("div", { className: "texto json", textContent: JSON.stringify(v, null, 2) });
+  return el("div", { className: "texto", textContent: String(v) });
+}
+
+function renderAnotar() {
+  const N = sessao.ordem.length, feitos = contarFeitos();
+  $("progresso").innerHTML = t("respondidos", feitos, N);
+  $("barra").style.width = (N ? feitos / N * 100 : 0) + "%";
+  if (sessao.pos >= N) {
+    $("an-item").hidden = true; $("an-fim").hidden = false;
+    $("fim-titulo").textContent = feitos === N ? t("fimTudo") : t("fimLista");
+    $("fim-texto").textContent = feitos === N ? t("fimTextoTudo", N) : t("fimTextoParcial", feitos, N);
+    $("fim-pular").hidden = feitos === N;
+    marca = null;
+    return;
+  }
+  $("an-item").hidden = false; $("an-fim").hidden = true;
+  const id = sessao.ordem[sessao.pos];
+  const linha = S.linhas[indice.get(id)];
+  $("an-id").textContent = rotuloItem(id);
+  $("an-pos").textContent = t("posDe", sessao.pos + 1, N);
+  $("an-campos").replaceChildren(...C().campos.filter(c => c.mostrar).map(c => el("div", { className: "campo" },
+    el("div", { className: "campo-nome", textContent: c.nome || c.coluna }), renderValor(linha[c.coluna]))));
+  atualizarBotoes(id);
+  $("an-nota").value = (sessao.respostas[id] && sessao.respostas[id].nota) || "";
+  $("an-anterior").disabled = sessao.pos === 0;
+  iniciarRelogio();
+}
+
+function atualizarBotoes(id) {
+  const r = sessao.respostas[id];
+  for (const b of document.querySelectorAll("#an-opcoes .opcao")) b.setAttribute("aria-pressed", String(!!r && r.rotulo === b.dataset.nome));
+}
+
+function irPara(p) {
+  pararRelogio();
+  sessao.pos = clamp(p, 0, sessao.ordem.length);
+  const ativo = document.activeElement;
+  if (ativo && ativo.classList && (ativo.classList.contains("opcao") || ativo.id === "an-nota")) ativo.blur();
+  salvar();
+  renderAnotar();
+  window.scrollTo(0, 0);
+}
+
+function responder(rotulo) {
+  const id = itemAtual();
+  if (!id) return;
+  sessao.respostas[id] = Object.assign({}, sessao.respostas[id], { rotulo, quando: new Date().toISOString() });
+  $("ultimo").textContent = t("ultimo", rotuloItem(id), rotulo);
+  irPara(sessao.pos + 1);
+}
+
+/* ---------- saídas ---------- */
+function campoCSV(v, d) {
+  if (v === undefined || v === null) return "";
+  let s = typeof v === "object" ? JSON.stringify(v) : String(v);
+  if (s.includes('"') || s.includes(d) || /[\r\n]/.test(s) || /^\s|\s$/.test(s)) s = '"' + s.replace(/"/g, '""') + '"';
+  return s;
+}
+function baixarCSV() {
+  if (marca !== null) { pararRelogio(); iniciarRelogio(); }
+  salvar();
+  const d = S.delim === ";" ? ";" : ",";
+  const usadas = new Set(S.colunas);
+  const nova = n => { let x = n; while (usadas.has(x)) x += "_new"; usadas.add(x); return x; };
+  const notas = C().notas;
+  const cab = [...S.colunas, nova(SAIDA.rotulo), ...(notas ? [nova(SAIDA.nota)] : []), nova(SAIDA.segundos), nova(SAIDA.anotador), nova(SAIDA.quando)];
+  const saida = [cab.map(c => campoCSV(c, d)).join(d)];
+  S.linhas.forEach((l, i) => {
+    const id = idDe(i), r = sessao.respostas[id] || {};
+    const vals = [...S.colunas.map(c => l[c]), r.rotulo || "", ...(notas ? [r.nota || ""] : []), sessao.tempo[id] ?? "", (r.rotulo || r.nota) ? anotador : "", r.quando || ""];
+    saida.push(vals.map(v => campoCSV(v, d)).join(d));
+  });
+  baixar(BOM + saida.join("\r\n") + "\r\n", `${baseNome()}-labeled-${slug(anotador)}.csv`, "text/csv;charset=utf-8");
+}
+function baixarProgresso() {
+  if (marca !== null) { pararRelogio(); iniciarRelogio(); }
+  salvar();
+  const v = { formato: "anotador-progresso", versao: 3, arquivo: S.arquivo, planilha: S.planilha || null, hash: S.hash, anotador, exportado: new Date().toISOString(), config: C(), sessao };
+  baixar(JSON.stringify(v, null, 1), `${baseNome()}-progress-${slug(anotador)}.json`, "application/json");
+}
+async function importarProgresso(file) {
+  let v;
+  try { v = JSON.parse(await file.text()); } catch (e) { alert(t("importarInvalido")); return; }
+  if (!v || v.formato !== "anotador-progresso" || !v.sessao) { alert(t("importarInvalido")); return; }
+  const outro = v.hash !== S.hash || (v.planilha || null) !== (S.planilha || null);
+  if (outro && !confirm(t("importarOutro", v.arquivo + (v.planilha ? ` (${v.planilha === "*" ? t("todasPlanilhas") : v.planilha})` : "")))) return;
+  const nome = String(v.anotador || anotador || "anotador");
+  const ja = lerLS(PREF + S.base + ":" + norm(nome));
+  if (ja && ja.sessao && ja.feitos > 0 && !confirm(t("importarTrocar", nome, ja.feitos))) return;
+  if (!S.pacote && v.config) S.config = mesclarConfig(v.config);
+  anotador = nome;
+  lembrarNome(nome);
+  sessao = v.sessao;
+  ajustarSessao();
+  salvar();
+  telaAnotar();
+}
+function gerarPagina() {
+  const err = validar();
+  if (err) { mostrarErro("cfg-erro", err); return; }
+  mostrarErro("cfg-erro", "");
+  if (!FONTE.includes(MARCA)) { alert(t("jaGerada")); return; }
+  const pacote = { arquivo: S.arquivo, planilha: S.planilha || null, formato: S.formato, delim: S.delim, colunas: S.colunas, linhas: S.linhas, hash: S.hash, config: C(), gerado: new Date().toISOString() };
+  const json = JSON.stringify(pacote).replace(/</g, "\\u003c");
+  const html = FONTE.replace(MARCA, () => '<script type="application/json" id="pacote">' + json + '</scr' + 'ipt>');
+  baixar(html, `anotador-${slug(baseNome())}.html`, "text/html;charset=utf-8");
+}
+
+/* ---------- eventos ---------- */
+$("idioma").addEventListener("click", trocarIdioma);
+$("arquivo").addEventListener("change", e => { const f = e.target.files[0]; e.target.value = ""; if (f) abrirArquivo(f); });
+$("amostra").addEventListener("click", abrirAmostra);
+const zona = $("soltar");
+for (const ev of ["dragenter", "dragover"]) document.addEventListener(ev, e => { if (tela !== "carregar") return; e.preventDefault(); zona.classList.add("sobre"); });
+for (const ev of ["dragleave", "drop"]) document.addEventListener(ev, () => zona.classList.remove("sobre"));
+document.addEventListener("drop", e => { if (tela !== "carregar") return; e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) abrirArquivo(f); });
+
+$("cfg-trocar").addEventListener("click", telaCarregar);
+$("cfg-planilha").addEventListener("change", e => { usarPlanilha(e.target.value === "todas" ? "todas" : +e.target.value); telaConfig(); });
+$("cfg-id").addEventListener("change", e => {
+  const c = e.target.value;
+  if (c && !idsUnicos(S, c)) {
+    $("cfg-id-aviso").textContent = t("idAviso", c);
+    e.target.value = ""; C().idColuna = ""; return;
+  }
+  $("cfg-id-aviso").textContent = "";
+  C().idColuna = c;
+});
+$("cfg-aleatorio").addEventListener("change", e => { C().aleatorio = e.target.checked; });
+$("cfg-notas").addEventListener("change", e => { C().notas = e.target.checked; });
+$("cfg-modelo").addEventListener("change", e => { if (e.target.value === "") return; C().opcoes = opcoesDe(MODELOS[+e.target.value]); renderOpcoesCfg(); });
+$("cfg-mais-opcao").addEventListener("click", () => { C().opcoes.push({ nome: "", tecla: teclaLivre(), cor: "cinza" }); renderOpcoesCfg(); });
+$("cfg-comecar").addEventListener("click", () => comecar($("cfg-nome").value));
+$("cfg-nome").addEventListener("keydown", e => { if (e.key === "Enter") comecar($("cfg-nome").value); });
+$("cfg-gerar").addEventListener("click", gerarPagina);
+$("nome-comecar").addEventListener("click", () => comecar($("nome-nome").value));
+$("nome-nome").addEventListener("keydown", e => { if (e.key === "Enter") comecar($("nome-nome").value); });
+for (const inp of document.querySelectorAll("input.importar")) inp.addEventListener("change", e => { const f = e.target.files[0]; e.target.value = ""; if (f) importarProgresso(f); });
+
+$("an-anterior").addEventListener("click", () => { if (sessao.pos > 0) irPara(sessao.pos - 1); });
+$("an-proxima").addEventListener("click", () => irPara(sessao.pos + 1));
+$("an-pular").addEventListener("click", () => irPara(primeiraSemResposta(sessao.pos + 1)));
+$("an-nota").addEventListener("input", e => {
+  const id = itemAtual();
+  if (!id) return;
+  const r = sessao.respostas[id] || (sessao.respostas[id] = {});
+  r.nota = e.target.value;
+  clearTimeout(tNota); tNota = setTimeout(salvar, 400);
+});
+$("fim-baixar").addEventListener("click", baixarCSV);
+$("fim-pular").addEventListener("click", () => irPara(primeiraSemResposta(0)));
+$("fim-inicio").addEventListener("click", () => irPara(0));
+$("baixar-csv").addEventListener("click", baixarCSV);
+$("baixar-prog").addEventListener("click", baixarProgresso);
+$("ir-config").addEventListener("click", () => { pararRelogio(); salvar(); if (S.pacote) telaNome(); else telaConfig(); });
+$("apagar").addEventListener("click", () => {
+  if (!confirm(t("confirmApagar", anotador))) return;
+  marca = null; novaSessao(); salvar(); telaAnotar();
+});
+const irNum = () => { const n = parseInt($("ir-num").value, 10); if (n >= 1) { irPara(Math.min(n, sessao.ordem.length) - 1); $("ir-num").value = ""; } };
+$("ir-btn").addEventListener("click", irNum);
+$("ir-num").addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); irNum(); } });
+
+document.addEventListener("keydown", ev => {
+  if (tela !== "anotar" || !sessao) return;
+  const alvo = ev.target, tag = alvo.tagName;
+  if (tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA") { if (ev.key === "Escape") alvo.blur(); return; }
+  if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+  if (ev.key === "ArrowLeft") { ev.preventDefault(); if (sessao.pos > 0) irPara(sessao.pos - 1); return; }
+  if (ev.key === "ArrowRight") { ev.preventDefault(); irPara(sessao.pos + 1); return; }
+  const k = ev.key.toLowerCase();
+  const o = C().opcoes.find(x => x.tecla && x.tecla === k);
+  if (o && itemAtual()) { ev.preventDefault(); responder(o.nome); }
+});
+document.addEventListener("visibilitychange", () => {
+  if (tela !== "anotar" || !sessao) return;
+  if (document.hidden) { pararRelogio(); salvar(); } else iniciarRelogio();
+});
+window.addEventListener("pagehide", () => { if (tela === "anotar" && sessao) { pararRelogio(); salvar(); } });
+
+/* ---------- início ---------- */
+(function iniciar() {
+  aplicarIdioma();
+  let pac = null;
+  try { pac = JSON.parse($("pacote").textContent); } catch (e) {}
+  if (pac && Array.isArray(pac.linhas) && Array.isArray(pac.colunas)) {
+    S = { arquivo: pac.arquivo, planilha: pac.planilha || null, formato: pac.formato, delim: pac.delim, colunas: pac.colunas, linhas: pac.linhas, hash: pac.hash, pacote: true };
+    S.config = mesclarConfig(pac.config);
+    S.base = "p" + pac.hash + cyrb53(JSON.stringify(pac.config) + "|" + (pac.planilha || ""));
+    telaNome();
+  } else telaCarregar();
+})();
+</script>
+</body>
+</html>
