@@ -19,7 +19,8 @@ A single HTML file that runs in your browser: no installation, no server, no upl
 - **Gives the table back:** download a CSV with your original columns plus `label`, the annotator, the time spent and when each item was answered.
 - **Keeps your progress:** saved in the browser as you go, per file, per sheet and per annotator. Reopen the file to continue.
 - **Shares the work:** make a single HTML page with the data and labels inside, so a second annotator only types a name and starts.
-- **Speaks two languages:** English and Portuguese, following the browser, with a button to switch. Light and dark themes follow your system.
+- **Speaks two languages:** English and Portuguese, following the browser, with a button to switch.
+- **Light and dark:** follows your system, or pick one with the sun and moon button.
 
 ## Supported files
 
