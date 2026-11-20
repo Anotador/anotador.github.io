@@ -10,12 +10,19 @@ A single HTML file that runs in your browser: no installation, no server, no upl
 
 <p align="center"><a href="https://anotador.github.io"><strong>Open Anotador</strong></a></p>
 
+## Demo
+
+[![Anotador demo: an Excel workbook with three sheets labeled from the keyboard](docs/demo.gif)](https://anotador.github.io/docs/demo.mp4)
+
+Click the animation for the full narrated video (1 min 36 s, with captions): an Excel workbook with three sheets, a CSV and a JSON file, from opening the file to downloading the labeled CSV. It also plays at the bottom of [the page](https://anotador.github.io).
+
 ## What it does
 
 - **Opens your file as it is:** XLSX (every sheet), CSV, TSV, JSON and JSONL.
 - **Shows only what matters:** you pick which columns appear, what each is called and in what order. Hidden columns still go to the output.
 - **One key per item:** press the key of a label and the next item appears. Arrow keys move back and forth.
-- **Labels for any task:** 22 ready-made label sets in four groups, all editable (name, key and color), or your own.
+- **Labels your way:** 22 ready-made sets in four groups, or your own. Each label has a key, a color (five ready-made or any hex code) and an optional description shown under its button.
+- **Fits the task:** instructions for annotators, columns side by side, drag and drop to reorder columns and labels, an optional notes box, shuffled order, and the choice of staying on an item until you move on.
 - **Gives the table back:** download a CSV with your original columns plus `label`, the annotator, the time spent and when each item was answered.
 - **Keeps your progress:** saved in the browser as you go, per file, per sheet and per annotator. Reopen the file to continue.
 - **Shares the work:** make a single HTML page with the data and labels inside, so a second annotator only types a name and starts.
@@ -39,9 +46,9 @@ Each item is identified by a column named `id`, `_id`, `uid`, `idx`, `index`, `i
 ## How to use
 
 1. Open the page and choose a file, drop it on the page, or click **Try it with sample data**.
-2. Tick the columns to show, rename them and put them in order. In a workbook with several sheets, pick the sheet.
-3. Choose a label set in **Preset** and adjust it if needed. A key cannot belong to two labels.
-4. Optionally turn on **Shuffled order** or **Notes box** (a free text note per item, saved in a `note` column).
+2. Tick the columns to show, rename them and drag them into order. In a workbook with several sheets, pick the sheet.
+3. Choose a label set in **Preset** and adjust it: rename, change keys, pick a color or type any hex code, add a description, drag to reorder. A key cannot belong to two labels.
+4. Optionally write **Instructions** for annotators, rename the label column, and turn on **Shuffled order**, **Notes box** (a free text note per item, saved in a `note` column), **Columns side by side** or off **Next item after labeling**.
 5. Type the annotator's name and click **Start labeling**.
 6. Press a label key for each item. **Download labeled CSV** works at any moment.
 
@@ -50,6 +57,7 @@ Each item is identified by a column named `id`, `_id`, `uid`, `idx`, `index`, `i
 | Label key (`1`, `2`, `3`...) | Labels the item and goes to the next one. |
 | `←` and `→` | Previous and next item. |
 | `Esc` | Leaves the notes box so the label keys work again. |
+| `↑` and `↓` on a drag handle | Move that column or label up or down in the settings. |
 | Next unlabeled | Jumps to the next item without a label. |
 | Go to | Jumps to an item number. |
 | Download progress, Import progress | Move your work to another browser or computer as a JSON file. |
@@ -71,7 +79,7 @@ All original columns come first, including the hidden ones, followed by:
 
 | Column | Content |
 | --- | --- |
-| `label` | The chosen label, empty if the item was not labeled. |
+| `label` | The chosen label, empty if the item was not labeled. The column name can be changed in the settings. |
 | `note` | The note typed for the item. Only when **Notes box** is on. |
 | `seconds` | Time spent on the item, counted only while the tab is visible. |
 | `annotator` | The annotator's name, on labeled rows. |
@@ -120,3 +128,4 @@ MIT. See [LICENSE](LICENSE).
 
 - Icons from [Lucide](https://lucide.dev), ISC License, embedded in the HTML.
 - Font [Atkinson Hyperlegible Next](https://github.com/googlefonts/atkinson-hyperlegible-next) by the Braille Institute, SIL Open Font License 1.1 (see [`fonts/OFL.txt`](fonts/OFL.txt)).
+- Demo narration: the voice Brittney, from the ElevenLabs voice library.

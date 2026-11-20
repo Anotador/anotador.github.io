@@ -1,0 +1,64 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.381
+Anotador is a free tool to label any dataset in your browser, one key per item.
+
+00:00:06.534 --> 00:00:07.334
+Open a file.
+
+00:00:07.334 --> 00:00:13.535
+This Excel workbook has three sheets, and you can label one of them, or all of them together.
+
+00:00:13.885 --> 00:00:15.668
+Choose what the annotator sees.
+
+00:00:15.668 --> 00:00:19.580
+The model's verdict stays hidden here, but it is kept in the output.
+
+00:00:19.932 --> 00:00:21.492
+Then pick a label set.
+
+00:00:21.492 --> 00:00:29.153
+There are 22 presets, from moderation to sentiment and ratings, and every label can be renamed or recolored.
+
+00:00:29.505 --> 00:00:31.057
+Type your name and start.
+
+00:00:31.057 --> 00:00:34.782
+Each key press labels the item and moves on to the next one.
+
+00:00:37.607 --> 00:00:38.675
+Changed your mind?
+
+00:00:38.675 --> 00:00:42.649
+The arrow keys take you back, and your progress is saved as you go.
+
+00:00:42.999 --> 00:00:46.238
+When you are done, download the labeled CSV.
+
+00:00:51.369 --> 00:00:57.351
+It keeps every original column, and adds the label, the annotator and the time spent on each item.
+
+00:00:58.353 --> 00:01:00.023
+A CSV works the same way.
+
+00:01:00.023 --> 00:01:05.302
+Here, a model's quiz answers are checked with the Correct and Incorrect preset.
+
+00:01:09.458 --> 00:01:14.500
+JSON works too, and chat logs show up as conversations, here rated by sentiment.
+
+00:01:19.619 --> 00:01:21.198
+Need a second annotator?
+
+00:01:21.198 --> 00:01:25.541
+One click makes a single page with the data and the labels inside.
+
+00:01:25.541 --> 00:01:28.239
+And the interface also speaks Portuguese.
+
+00:01:28.491 --> 00:01:33.071
+Anotador is open source and runs entirely in your browser.
+
+00:01:33.071 --> 00:01:35.361
+Try it at anotador.github.io.
