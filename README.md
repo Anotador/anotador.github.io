@@ -14,7 +14,7 @@ A single HTML file that runs in your browser: no installation, no server, no upl
 
 [![Anotador demo: an Excel workbook with three sheets labeled from the keyboard](docs/demo.gif)](https://anotador.github.io/docs/demo.mp4)
 
-Click the animation for the full narrated video (1 min 36 s, with captions): an Excel workbook with three sheets, a CSV and a JSON file, from opening the file to downloading the labeled CSV. It also plays at the bottom of [the page](https://anotador.github.io).
+Click the animation for the full narrated video (1 min 36 s, captions available): an Excel workbook with three sheets, a CSV and a JSON file, from opening the file to downloading the labeled CSV. There is also a version narrated in Portuguese, with the interface in Portuguese: [demo-pt.mp4](https://anotador.github.io/docs/demo-pt.mp4). At the bottom of [the page](https://anotador.github.io), the video follows the interface language.
 
 ## What it does
 
@@ -24,7 +24,7 @@ Click the animation for the full narrated video (1 min 36 s, with captions): an 
 - **Labels your way:** 22 ready-made sets in four groups, or your own. Each label has a key, a color (five ready-made or any hex code) and an optional description shown under its button.
 - **Fits the task:** instructions for annotators, columns side by side, drag and drop to reorder columns and labels, an optional notes box, shuffled order, and the choice of staying on an item until you move on.
 - **Gives the table back:** download a CSV with your original columns plus `label`, the annotator, the time spent and when each item was answered.
-- **Keeps your progress:** saved in the browser as you go, per file, per sheet and per annotator. Reopen the file to continue.
+- **Never loses your work:** every label is saved in the browser the moment you press the key, per file, per sheet and per annotator. Closing the browser or turning off the computer loses nothing; reopen the file to continue (see [Your work is saved](#your-work-is-saved)).
 - **Shares the work:** make a single HTML page with the data and labels inside, so a second annotator only types a name and starts.
 - **Speaks two languages:** English and Portuguese, following the browser, with a button to switch.
 - **Light and dark:** follows your system, or pick one with the sun and moon button.
@@ -95,12 +95,23 @@ In the settings, click **Make a page for another annotator**. You get one HTML f
 
 The data travels inside that file, so only send it to people who may see the data.
 
+## Your work is saved
+
+Every label is stored in the browser (`localStorage`) the moment you press its key. Closing the tab, closing the browser, restarting or turning off the computer loses nothing: open the same file again and the page offers to continue where you stopped.
+
+It is lost only when the browser erases this site's data:
+
+- you clear the browsing data or the data of this site;
+- the browser is set to clear site data when it closes;
+- you labeled in a private or incognito window, which forgets everything when it closes;
+- in Safari, after seven days of Safari use without opening the page, as [WebKit documents](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/) for all script-writable storage.
+
+**Delete my labels** removes the current annotator's labels for the current file, after asking. Another browser, another computer, and the online page versus a local copy each keep their own progress. To keep a backup or move your work, click **Download progress** (a small JSON file) and later **Import progress**.
+
 ## Privacy
 
 - Your file is read by your browser and never uploaded. The page has no server, no analytics and no third-party scripts.
-- The only files the page loads besides itself are its two font files, from the same folder. Without them it falls back to the system font.
-- Progress lives in your browser's `localStorage`. Clearing the site data removes it, and **Delete my labels** removes the current annotator's labels for the current file.
-- The online page and a local copy keep separate progress. Use **Download progress** and **Import progress** to move between them.
+- The only files the page loads besides itself are its two font files, from the same folder (without them it falls back to the system font) and, only after you click Watch, the demo video.
 
 ## Run it offline
 
