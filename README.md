@@ -21,7 +21,7 @@ Click the animation for the full narrated video (1 min 36 s, captions available)
 - **Opens your file as it is:** XLSX (every sheet), CSV, TSV, JSON and JSONL.
 - **Shows only what matters:** you pick which columns appear, what each is called and in what order. Hidden columns still go to the output.
 - **One key per item:** press the key of a label and the next item appears. Arrow keys move back and forth.
-- **Labels your way:** 22 ready-made sets in four groups, or your own. Each label has a key, a color (five ready-made or any hex code) and an optional description shown under its button.
+- **Labels your way:** 25 ready-made sets in four groups, or your own. Each label has a key, a color (five ready-made or any hex code) and an optional description shown under its button.
 - **Fits the task:** instructions for annotators, columns side by side, drag and drop to reorder columns and labels, an optional notes box, shuffled order, and the choice of staying on an item until you move on.
 - **Gives the table back:** download a CSV with your original columns plus `label`, the annotator, the time spent and when each item was answered.
 - **Never loses your work:** every label is saved in the browser the moment you press the key, per file, per sheet and per annotator. Closing the browser or turning off the computer loses nothing; reopen the file to continue (see [Your work is saved](#your-work-is-saved)).
@@ -64,11 +64,11 @@ Each item is identified by a column named `id`, `_id`, `uid`, `idx`, `index`, `i
 
 ## Label presets
 
-Every preset uses the keys `1`, `2`, `3` and so on, in order. After choosing one, each label can still be renamed, recolored or removed, and new ones added.
+Every preset uses the keys `1`, `2`, `3` and so on, in order. The jailbreak, prompt injection and harm category presets also bring a short definition under each label, so different annotators apply them the same way. After choosing one, each label can still be renamed, recolored or removed, and new ones added.
 
 | Group | Presets |
 | --- | --- |
-| Safety and moderation | Benign / Harmful / Ambiguous (default), Safe / Unsafe, Complied / Partly complied / Refused, Toxic / Not toxic, Hateful / Offensive / Neither, Spam / Not spam, Personal data / No personal data |
+| Safety and moderation | Benign / Harmful / Ambiguous (default), Jailbreak / Not jailbreak / Ambiguous, Prompt injection / Not injection / Ambiguous, Harm category from [UnifiedBench](https://huggingface.co/datasets/labp2d/UnifiedBench) (Physical harm, Cybercrime, Exposure/Privacy, Disinformation, Toxicity, Compliance, Illegal), Safe / Unsafe, Complied / Partly complied / Refused, Toxic / Not toxic, Hateful / Offensive / Neither, Spam / Not spam, Personal data / No personal data |
 | Quality and correctness | Correct / Incorrect, Correct / Partly correct / Incorrect, Factual / Hallucinated / Can't verify, Relevant / Partly relevant / Not relevant, Accurate / Minor errors / Major errors / Unusable (translation), Rating 1 to 5 |
 | Text classification | Positive / Neutral / Negative, Joy / Sadness / Anger / Fear / Surprise / Neutral, In favor / Against / No stance, Question / Request / Complaint / Praise / Other |
 | Review and comparison | A is better / Tie / B is better, Agree / Disagree / Unsure, Keep / Discard / Review, Duplicate / Not duplicate, Yes / No / Unsure |
