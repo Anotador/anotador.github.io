@@ -1,0 +1,64 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.851
+O Anotador é uma ferramenta gratuita para rotular qualquer conjunto de dados no navegador, uma tecla por item.
+
+00:00:07.003 --> 00:00:07.902
+Abra um arquivo.
+
+00:00:07.902 --> 00:00:12.567
+Esta planilha do Excel tem três abas, e dá para rotular uma delas, ou todas juntas.
+
+00:00:12.919 --> 00:00:14.986
+Escolha o que quem anota vai ver.
+
+00:00:14.986 --> 00:00:19.685
+Aqui o veredito do modelo fica escondido, mas continua no arquivo de saída.
+
+00:00:20.039 --> 00:00:23.003
+Depois, escolha um conjunto de rótulos.
+
+00:00:23.003 --> 00:00:30.070
+São 22 modelos, de moderação a sentimento e notas, e cada rótulo pode mudar de nome e de cor.
+
+00:00:30.420 --> 00:00:32.070
+Digite seu nome e comece.
+
+00:00:32.070 --> 00:00:35.436
+Cada tecla rotula o item e já passa para o próximo.
+
+00:00:38.762 --> 00:00:39.693
+Mudou de ideia?
+
+00:00:39.693 --> 00:00:44.222
+As setas do teclado voltam, e o progresso fica salvo enquanto você anota.
+
+00:00:44.573 --> 00:00:47.211
+Quando terminar, baixe o CSV anotado.
+
+00:00:52.930 --> 00:01:00.114
+Ele mantém todas as colunas originais e acrescenta o rótulo, quem anotou e o tempo gasto em cada item.
+
+00:01:01.115 --> 00:01:03.356
+Um CSV funciona do mesmo jeito.
+
+00:01:03.356 --> 00:01:09.788
+Aqui, as respostas de um modelo num quiz são conferidas com o modelo Correta e Incorreta.
+
+00:01:12.397 --> 00:01:18.745
+JSON também funciona, e as conversas aparecem como diálogo, aqui avaliadas por sentimento.
+
+00:01:22.794 --> 00:01:24.859
+Precisa de um segundo anotador?
+
+00:01:24.859 --> 00:01:29.190
+Um clique gera uma página única com os dados e os rótulos dentro.
+
+00:01:29.190 --> 00:01:31.388
+E a interface também fala inglês.
+
+00:01:31.640 --> 00:01:36.583
+O Anotador é de código aberto e roda inteiro no seu navegador.
+
+00:01:36.583 --> 00:01:39.294
+Experimente em anotador.github.io.
