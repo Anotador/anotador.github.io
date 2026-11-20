@@ -28,6 +28,7 @@
   --amarelo: #835800; --amarelo-fundo: #fbf1d7;
   --azul: #1f5a96; --azul-fundo: #e5eef9;
   --cinza: #4b525a; --cinza-fundo: #eef1f4;
+  --tinta: #000;   /* cor livre de rótulo: o texto puxa para esta tinta e fica legível no tema */
 }
 /* tema escuro: segue o sistema, a não ser que a pessoa escolha no botão de sol e lua (data-tema no html) */
 @media (prefers-color-scheme: dark) {
@@ -40,6 +41,7 @@
     --amarelo: #eccb7c; --amarelo-fundo: #2f2611;
     --azul: #9cc4ee; --azul-fundo: #16243a;
     --cinza: #c3cad1; --cinza-fundo: #222a33;
+    --tinta: #fff;
   }
 }
 :root[data-tema="escuro"] {
@@ -51,6 +53,7 @@
   --amarelo: #eccb7c; --amarelo-fundo: #2f2611;
   --azul: #9cc4ee; --azul-fundo: #16243a;
   --cinza: #c3cad1; --cinza-fundo: #222a33;
+  --tinta: #fff;
 }
 * { box-sizing: border-box; }
 html { scrollbar-color: var(--borda-forte) var(--fundo); }
@@ -145,7 +148,7 @@ textarea { resize: vertical; }
 .arquivo-nome strong { font-size: 17px; overflow-wrap: anywhere; }
 .arquivo-nome .dica { margin: 2px 0 0; }
 #cfg-planilha-caixa { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--borda); max-width: 32rem; }
-.campo-linha { display: grid; grid-template-columns: minmax(150px, 1fr) minmax(140px, 1fr) minmax(0, 2fr) 5rem; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--borda); }
+.campo-linha { display: grid; grid-template-columns: 1.6rem minmax(150px, 1fr) minmax(140px, 1fr) minmax(0, 2fr) 5rem; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--borda); }
 .campo-linha.cabeca { border-top: 0; font-size: 13.5px; font-weight: 700; color: var(--suave); padding: 0 0 4px; }
 .campo-linha label { display: flex; gap: 10px; align-items: center; min-width: 0; cursor: pointer; }
 .campo-linha code { font-size: 14px; overflow-wrap: anywhere; }
@@ -153,16 +156,35 @@ textarea { resize: vertical; }
 .amostra { color: var(--suave); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .setas { display: flex; gap: 4px; justify-content: flex-end; }
 .setas button { padding: 5px 7px; }
-.opcoes-tela { display: grid; grid-template-columns: minmax(0, 22rem) auto auto; gap: 12px 28px; align-items: end; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--borda); }
+.opcoes-tela { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: flex-end; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--borda); }
+.opcoes-tela > div { flex: 0 1 22rem; }
 .marca-opcao { display: flex; gap: 9px; align-items: center; cursor: pointer; padding: 9px 0; font-weight: 600; }
 .marca-opcao .ic { color: var(--suave); }
 .modelo { max-width: 26rem; margin: 2px 0 16px; }
-.opcao-linha { display: grid; grid-template-columns: minmax(0, 1fr) 4.4rem 9.5rem 2.6rem; gap: 10px; align-items: center; margin-top: 8px; }
-.opcao-linha.cabeca { font-size: 13.5px; font-weight: 700; color: var(--suave); margin-top: 0; }
-.opcao-linha input.tecla { text-align: center; text-transform: uppercase; font-weight: 700; }
-.cor { position: relative; }
-.cor select { padding-left: 32px; }
-.bolinha { position: absolute; left: 11px; top: 50%; width: 13px; height: 13px; margin-top: -6.5px; border-radius: 50%; background: var(--c); pointer-events: none; }
+.opcao-cfg { border: 1px solid var(--borda); border-radius: 12px; padding: 10px 12px; margin-top: 10px; background: var(--caixa); }
+.opcao-cfg .l1 { display: grid; grid-template-columns: auto minmax(0, 1fr) 4.2rem auto auto; gap: 10px; align-items: center; }
+.opcao-cfg input.tecla { text-align: center; text-transform: uppercase; font-weight: 700; }
+.opcao-cfg input.desc { margin-top: 8px; font-size: 14px; }
+.cores { display: flex; gap: 7px; align-items: center; }
+button.amostra-cor { width: 24px; height: 24px; padding: 0; border-radius: 50%; border: 0; background: var(--c); flex: none; }
+button.amostra-cor[aria-pressed=true] { box-shadow: 0 0 0 2px var(--caixa), 0 0 0 4px var(--c); }
+input[type=color].cor-livre { width: 34px; height: 30px; padding: 2px; border: 1px solid var(--borda-forte); border-radius: 8px; background: var(--cartao); cursor: pointer; flex: none; }
+input[type=text].hex { width: 6.6rem; font-family: ui-monospace, "Cascadia Mono", Menlo, monospace; font-size: 14px; }
+button.alca { padding: 4px; border: 0; background: transparent; cursor: grab; touch-action: none; }
+button.alca .ic { color: var(--suave); }
+button.alca:active { cursor: grabbing; }
+.arrastando { opacity: .45; }
+.alvo-acima { box-shadow: 0 -3px 0 0 var(--acento); }
+.alvo-abaixo { box-shadow: 0 3px 0 0 var(--acento); }
+.coluna-rotulo { max-width: 22rem; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--borda); }
+.erro-campo { margin: 8px 0 0; font-size: 14px; }
+input[aria-invalid=true], button[aria-invalid=true] { border-color: var(--erro); box-shadow: 0 0 0 3px color-mix(in srgb, var(--erro) 22%, transparent); }
+:where(input, select, textarea, button) { scroll-margin-top: 96px; }
+.instrucoes { padding: 14px 20px; }
+.instrucoes summary { cursor: pointer; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.instrucoes summary .ic { color: var(--acento); }
+.instrucoes .pre, .instrucoes-texto { white-space: pre-wrap; margin: 10px 0 2px; }
+#an-campos.lado { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0 18px; align-items: start; }
 [data-cor=verde] { --c: var(--verde); --cf: var(--verde-fundo); }
 [data-cor=vermelho] { --c: var(--vermelho); --cf: var(--vermelho-fundo); }
 [data-cor=amarelo] { --c: var(--amarelo); --cf: var(--amarelo-fundo); }
@@ -195,6 +217,13 @@ textarea { resize: vertical; }
 .opcao .ic { color: inherit; margin-left: auto; visibility: hidden; }
 .opcao[aria-pressed=true] { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 35%, transparent); }
 .opcao[aria-pressed=true] .ic { visibility: visible; }
+.opcao[data-cor=hex] { --cf: color-mix(in srgb, var(--c) 14%, var(--cartao)); color: color-mix(in srgb, var(--c) 72%, var(--tinta)); }
+.opcao .txt { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 1px; min-width: 0; }
+.opcao .txt small { font-weight: 500; font-size: 13px; opacity: .85; }
+.video video { display: block; width: 100%; height: auto; border-radius: 10px; background: #000; }
+#video-demo { scroll-margin-top: 90px; }
+.link-video { display: inline-flex; align-items: center; gap: 7px; margin-top: 14px; font-weight: 600; text-decoration: none; }
+.link-video:hover { text-decoration: underline; }
 #an-nota { margin-top: 12px; }
 .nav { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--borda); }
 .atalhos { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--suave); font-size: 14px; }
@@ -212,13 +241,13 @@ kbd { font: 700 12.5px/1 ui-monospace, "Cascadia Mono", Menlo, monospace; min-wi
   .opcoes-tela { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
-  .campo-linha { grid-template-columns: 1fr auto; }
-  .campo-linha input[type=text] { grid-column: 1 / -1; grid-row: 2; }
-  .campo-linha .amostra { grid-column: 1 / -1; }
+  .campo-linha { grid-template-columns: 1.6rem 1fr auto; }
+  .campo-linha input[type=text] { grid-column: 2 / -1; grid-row: 2; }
+  .campo-linha .amostra { grid-column: 2 / -1; grid-row: 3; }
+  .campo-linha .setas { grid-column: 3; grid-row: 1; }
   .campo-linha.cabeca { display: none; }
-  .opcao-linha { grid-template-columns: minmax(0, 1fr) 3.6rem 2.6rem; }
-  .opcao-linha .cor { grid-column: 1 / -1; grid-row: 2; }
-  .opcao-linha.cabeca { display: none; }
+  .opcao-cfg .l1 { grid-template-columns: auto minmax(0, 1fr) 3.8rem auto; }
+  .opcao-cfg .cores { grid-column: 1 / -1; grid-row: 2; flex-wrap: wrap; }
   .comecar-linha { grid-template-columns: 1fr; }
   .opcao { max-width: none; flex-basis: 40%; }
   .topo-direita { margin-left: 0; width: 100%; justify-content: space-between; }
@@ -227,7 +256,7 @@ kbd { font: 700 12.5px/1 ui-monospace, "Cascadia Mono", Menlo, monospace; min-wi
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol><symbol id="i-braces" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol><symbol id="i-file-output" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4 7V4a2 2 0 0 1 2-2 2 2 0 0 0-2 2"/><path d="M4.063 20.999a2 2 0 0 0 2 1L18 22a2 2 0 0 0 2-2V7l-5-5H6"/><path d="m5 11-3 3"/><path d="m5 17-3-3h10"/></symbol><symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol><symbol id="i-hash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/></symbol><symbol id="i-house" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="i-languages" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol><symbol id="i-list-checks" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></symbol><symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol><symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-rotate-ccw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol><symbol id="i-settings-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></symbol><symbol id="i-sheet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="9" y2="21"/><line x1="15" x2="15" y1="9" y2="21"/></symbol><symbol id="i-shuffle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></symbol><symbol id="i-skip-forward" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" x2="19" y1="5" y2="19"/></symbol><symbol id="i-sticky-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol><symbol id="i-table-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></symbol><symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></symbol><symbol id="i-trash-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></symbol><symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></symbol><symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol><symbol id="i-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol><symbol id="i-braces" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-circle-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></symbol><symbol id="i-columns-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 3v18"/></symbol><symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol><symbol id="i-fast-forward" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 19 22 12 13 5 13 19"/><polygon points="2 19 11 12 2 5 2 19"/></symbol><symbol id="i-file-output" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4 7V4a2 2 0 0 1 2-2 2 2 0 0 0-2 2"/><path d="M4.063 20.999a2 2 0 0 0 2 1L18 22a2 2 0 0 0 2-2V7l-5-5H6"/><path d="m5 11-3 3"/><path d="m5 17-3-3h10"/></symbol><symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol><symbol id="i-grip-vertical" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="1"/><circle cx="9" cy="5" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="19" r="1"/></symbol><symbol id="i-hash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/></symbol><symbol id="i-house" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol><symbol id="i-languages" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol><symbol id="i-list-checks" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></symbol><symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol><symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol><symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></symbol><symbol id="i-rotate-ccw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol><symbol id="i-settings-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></symbol><symbol id="i-sheet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="9" y2="21"/><line x1="15" x2="15" y1="9" y2="21"/></symbol><symbol id="i-shuffle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></symbol><symbol id="i-skip-forward" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" x2="19" y1="5" y2="19"/></symbol><symbol id="i-sticky-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></symbol><symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol><symbol id="i-table-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></symbol><symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></symbol><symbol id="i-trash-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></symbol><symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></symbol><symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol></svg>
 <header class="topo">
   <div class="topo-linha">
     <h1 class="marca"><button type="button" id="marca" class="marca-btn"><img src="data:image/png;base64,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" alt="" width="30" height="30">Anotador</button></h1>
@@ -267,8 +296,16 @@ kbd { font: 700 12.5px/1 ui-monospace, "Cascadia Mono", Menlo, monospace; min-wi
           <span class="formatos"><span class="fmt">XLSX</span><span class="fmt">CSV</span><span class="fmt">TSV</span><span class="fmt">JSON</span><span class="fmt">JSONL</span></span>
         </label>
         <button id="amostra" class="amostra-btn" type="button"><svg class="ic"><use href="#i-play"/></svg><span data-i18n="amostra"></span></button>
+        <a class="link-video" href="#video-demo" id="link-video"><svg class="ic"><use href="#i-circle-play"/></svg><span data-i18n="assistir"></span></a>
         <p id="erro-carregar" class="erro" hidden></p>
       </div>
+    </div>
+    <div class="cartao video" id="video-demo">
+      <h2><svg class="ic"><use href="#i-circle-play"/></svg><span data-i18n="videoTitulo"></span></h2>
+      <p class="dica" data-i18n="videoDica"></p>
+      <video controls preload="none" playsinline poster="docs/demo-poster.jpg" width="1920" height="1080">
+        <source src="docs/demo.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="cartao" id="salvas" hidden>
       <h2><svg class="ic"><use href="#i-circle-check"/></svg><span data-i18n="salvasTitulo"></span></h2>
@@ -309,6 +346,8 @@ kbd { font: 700 12.5px/1 ui-monospace, "Cascadia Mono", Menlo, monospace; min-wi
         </div>
         <label class="marca-opcao"><input type="checkbox" id="cfg-aleatorio"><svg class="ic"><use href="#i-shuffle"/></svg><span data-i18n="aleatorio"></span></label>
         <label class="marca-opcao"><input type="checkbox" id="cfg-notas"><svg class="ic"><use href="#i-sticky-note"/></svg><span data-i18n="notas"></span></label>
+        <label class="marca-opcao"><input type="checkbox" id="cfg-lado"><svg class="ic"><use href="#i-columns-2"/></svg><span data-i18n="lado"></span></label>
+        <label class="marca-opcao"><input type="checkbox" id="cfg-avancar"><svg class="ic"><use href="#i-fast-forward"/></svg><span data-i18n="avancar"></span></label>
       </div>
     </div>
 
@@ -323,6 +362,16 @@ kbd { font: 700 12.5px/1 ui-monospace, "Cascadia Mono", Menlo, monospace; min-wi
       <div class="botoes" style="margin-top:12px">
         <button type="button" class="pequeno" id="cfg-mais-opcao"><svg class="ic"><use href="#i-plus"/></svg><span data-i18n="maisRotulo"></span></button>
       </div>
+      <div class="coluna-rotulo">
+        <label class="rotulo" for="cfg-coluna"><svg class="ic"><use href="#i-table-2"/></svg><span data-i18n="colunaRotulo"></span></label>
+        <input type="text" id="cfg-coluna" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+
+    <div class="cartao">
+      <h2><svg class="ic"><use href="#i-book-open"/></svg><span data-i18n="instrucoesTitulo"></span></h2>
+      <p class="dica" data-i18n="instrucoesDica"></p>
+      <textarea id="cfg-instrucoes" rows="4" data-i18n-ph="instrucoesPh"></textarea>
     </div>
 
     <div class="cartao">
@@ -348,6 +397,7 @@ kbd { font: 700 12.5px/1 ui-monospace, "Cascadia Mono", Menlo, monospace; min-wi
         <span class="arquivo-ic"><svg class="ic"><use href="#i-file-output"/></svg></span>
         <div><strong id="nome-titulo"></strong><p class="dica" id="nome-resumo"></p></div>
       </div>
+      <div class="instrucoes-texto" id="nome-instrucoes" hidden></div>
     </div>
     <div class="cartao" id="nome-sessoes" hidden>
       <h2><svg class="ic"><use href="#i-circle-check"/></svg><span data-i18n="nomeSessoes"></span></h2>
@@ -369,6 +419,10 @@ kbd { font: 700 12.5px/1 ui-monospace, "Cascadia Mono", Menlo, monospace; min-wi
   </section>
 
   <section id="tela-anotar" hidden>
+    <details class="cartao instrucoes" id="an-instrucoes" hidden>
+      <summary><svg class="ic"><use href="#i-book-open"/></svg><span data-i18n="instrucoesTitulo"></span></summary>
+      <div class="pre" id="an-instrucoes-texto"></div>
+    </details>
     <div class="cartao item" id="an-item">
       <div class="topo-item">
         <span class="id-item"><svg class="ic"><use href="#i-hash"/></svg><span id="an-id"></span></span>
@@ -424,6 +478,14 @@ const SUBSTITUICAO = String.fromCharCode(0xFFFD);
 const ACENTOS = new RegExp("[" + String.fromCharCode(0x300) + "-" + String.fromCharCode(0x36f) + "]", "g");
 const CORES = ["verde", "vermelho", "amarelo", "azul", "cinza"];
 const EXTENSOES = ["xlsx", "xlsm", "csv", "tsv", "txt", "json", "jsonl", "ndjson"];
+/* cor das bolinhas de cada cor pronta (o botão do rótulo usa a variante do tema) e a inicial do campo hexadecimal */
+const NOMEADAS = { verde: "#22a05a", vermelho: "#d93025", amarelo: "#e0a800", azul: "#2f74c0", cinza: "#8a939c" };
+function normHex(s) {
+  const m = String(s || "").trim().match(/^#?([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (!m) return null;
+  return "#" + (m[1].length === 3 ? m[1].split("").map(c => c + c).join("") : m[1]).toLowerCase();
+}
+const hexDe = cor => CORES.includes(cor) ? NOMEADAS[cor] : (normHex(cor) || NOMEADAS.cinza);
 /* colunas que o CSV ganha, com o mesmo nome nos dois idiomas */
 const SAIDA = { rotulo: "label", nota: "note", segundos: "seconds", anotador: "annotator", quando: "answered_at", planilha: "sheet" };
 /* modelos de rótulos, agrupados por tipo de tarefa; o primeiro é o padrão. Tecla 1, 2, 3... na ordem */
@@ -496,9 +558,9 @@ const TXT = {
     salvasTitulo: "Anotações guardadas neste navegador", salvasDica: "Para continuar uma delas, abra o mesmo arquivo de novo.",
     trocarArquivo: "Trocar arquivo", planilhaRotulo: "Planilha", sessoesTitulo: "Este arquivo já tem anotação neste navegador",
     telaTitulo: "O que aparece na tela",
-    telaDica: "Marque as colunas que quem anota deve ver, na ordem em que aparecem. Coluna desmarcada some da tela mas continua no CSV que você baixa.",
+    telaDica: "Marque as colunas que quem anota deve ver e arraste pela alça para pôr na ordem. Coluna desmarcada some da tela mas continua no CSV que você baixa.",
     idRotulo: "Identificação de cada item", aleatorio: "Ordem embaralhada", notas: "Caixa de observação", rotulosTitulo: "Rótulos",
-    rotulosDica: "Os botões que aparecem para cada item. A tecla é o atalho; o rótulo escolhido vai para a coluna <code>label</code> do CSV.",
+    rotulosDica: "Os botões que aparecem para cada item. A tecla é o atalho, a cor pode ser qualquer uma e a alça muda a ordem.",
     modeloRotulo: "Modelo", modeloProprio: "Rótulos próprios", maisRotulo: "Rótulo", quemAnota: "Quem anota", seuNome: "seu nome",
     comecar: "Começar a anotar", gerar: "Gerar página para outro anotador", importar: "Importar progresso",
     gerarDica: "A página gerada é um HTML só, com estes dados, colunas e rótulos dentro: quem recebe abre no navegador, põe o nome e anota.",
@@ -515,6 +577,16 @@ const TXT = {
     idAviso: c => `A coluna ${c} tem valores repetidos ou vazios; fica o número da linha.`,
     opCabeca: ["Rótulo", "Tecla", "Cor"], opNomePh: "nome do rótulo", opNomeAria: "Nome do rótulo", teclaAria: "Tecla", corAria: "Cor",
     removerX: n => `Remover ${n}`,
+    descPh: "Descrição (opcional), aparece embaixo do botão", corLivre: "Qualquer cor", hexAria: "Cor em hexadecimal",
+    hexInvalida: n => `A cor de "${n}" precisa ser um código hexadecimal, como #3a76ba.`,
+    arrastar: "Arraste para mudar a ordem, ou use as setas do teclado",
+    instrucoesTitulo: "Instruções", instrucoesDica: "Aparecem para quem anota, na tela de anotação e na página gerada para outro anotador.",
+    instrucoesPh: "Por exemplo: o que conta como nociva e o que fazer na dúvida.",
+    colunaRotulo: "Nome da coluna no CSV", colunaVazia: "Dê um nome para a coluna do rótulo.",
+    colunaReservada: c => `O nome "${c}" já é usado pela página; escolha outro.`,
+    lado: "Colunas lado a lado", avancar: "Próximo item ao rotular",
+    assistir: "Ver o vídeo de 1:36", videoTitulo: "Veja funcionando",
+    videoDica: "Uma planilha do Excel com três abas, um CSV e um JSON, do arquivo aberto ao CSV baixado. Narração em inglês, com legenda.",
     cores: { verde: "Verde", vermelho: "Vermelho", amarelo: "Amarelo", azul: "Azul", cinza: "Cinza" },
     sessaoInfo: (f, t, d) => `${f} de ${t} respondidos, em ${d}`, salvaInfo: (a, f, t, d) => `${a}, ${f} de ${t} respondidos, em ${d}`,
     continuarComo: n => `Continuar como ${n}`, apagarSessao: "Apagar",
@@ -557,9 +629,9 @@ const TXT = {
     salvasTitulo: "Labeling saved in this browser", salvasDica: "To continue one of them, open the same file again.",
     trocarArquivo: "Change file", planilhaRotulo: "Sheet", sessoesTitulo: "This file already has labels in this browser",
     telaTitulo: "What shows on screen",
-    telaDica: "Tick the columns the annotator should see, in display order. Unticked columns are hidden but still go into the CSV you download.",
+    telaDica: "Tick the columns the annotator should see and drag the handle to order them. Unticked columns are hidden but still go into the CSV you download.",
     idRotulo: "Item identifier", aleatorio: "Shuffled order", notas: "Notes box", rotulosTitulo: "Labels",
-    rotulosDica: "The buttons shown for each item. The key is the shortcut; the chosen label goes to the <code>label</code> column of the CSV.",
+    rotulosDica: "The buttons shown for each item. The key is the shortcut, the color can be anything, and the handle changes the order.",
     modeloRotulo: "Preset", modeloProprio: "Custom labels", maisRotulo: "Label", quemAnota: "Annotator", seuNome: "your name",
     comecar: "Start labeling", gerar: "Make a page for another annotator", importar: "Import progress",
     gerarDica: "The generated page is a single HTML file with this data, columns and labels inside: whoever gets it opens it, types their name and labels.",
@@ -576,6 +648,16 @@ const TXT = {
     idAviso: c => `Column ${c} has repeated or empty values; using the row number.`,
     opCabeca: ["Label", "Key", "Color"], opNomePh: "label name", opNomeAria: "Label name", teclaAria: "Key", corAria: "Color",
     removerX: n => `Remove ${n}`,
+    descPh: "Description (optional), shown under the button", corLivre: "Any color", hexAria: "Color in hexadecimal",
+    hexInvalida: n => `The color of "${n}" must be a hex code, like #3a76ba.`,
+    arrastar: "Drag to reorder, or use the arrow keys",
+    instrucoesTitulo: "Instructions", instrucoesDica: "Shown to whoever labels, on the labeling screen and on a page made for another annotator.",
+    instrucoesPh: "For example: what counts as harmful, and what to do when in doubt.",
+    colunaRotulo: "Column name in the CSV", colunaVazia: "Give the label column a name.",
+    colunaReservada: c => `The name "${c}" is already used by the page; choose another.`,
+    lado: "Columns side by side", avancar: "Next item after labeling",
+    assistir: "Watch the 1:36 demo", videoTitulo: "See it in action",
+    videoDica: "An Excel workbook with three sheets, a CSV and a JSON file, from opening the file to downloading the labeled CSV. Narrated in English, with captions.",
     cores: { verde: "Green", vermelho: "Red", amarelo: "Yellow", azul: "Blue", cinza: "Gray" },
     sessaoInfo: (f, t, d) => `${f} of ${t} labeled, on ${d}`, salvaInfo: (a, f, t, d) => `${a}, ${f} of ${t} labeled, on ${d}`,
     continuarComo: n => `Continue as ${n}`, apagarSessao: "Delete",
@@ -613,7 +695,7 @@ let LANG = (() => {
   return /^pt\b/i.test(navigator.language || "") ? "pt" : "en";
 })();
 function t(chave, ...args) { const v = TXT[LANG][chave]; return typeof v === "function" ? v(...args) : v; }
-const opcoesDe = (m, lang = LANG) => m[lang].map((nome, i) => ({ nome, tecla: String(i + 1), cor: m.cores[i] }));
+const opcoesDe = (m, lang = LANG) => m[lang].map((nome, i) => ({ nome, desc: "", tecla: String(i + 1), cor: m.cores[i] }));
 const opcoesPadrao = (lang = LANG) => opcoesDe(MODELOS[0], lang);
 const modeloDe = (opcoes, lang = LANG) => { const s = JSON.stringify(opcoes); return MODELOS.findIndex(m => JSON.stringify(opcoesDe(m, lang)) === s); };
 
@@ -970,7 +1052,8 @@ function acharId(d) {
 }
 function configPadrao() {
   const idCol = acharId(S);
-  return { campos: S.colunas.map(c => ({ coluna: c, nome: c, mostrar: c !== idCol })), idColuna: idCol, aleatorio: false, notas: false, opcoes: opcoesPadrao() };
+  return { campos: S.colunas.map(c => ({ coluna: c, nome: c, mostrar: c !== idCol })), idColuna: idCol, aleatorio: false, notas: false,
+    lado: false, avancar: true, colunaRotulo: SAIDA.rotulo, instrucoes: "", opcoes: opcoesPadrao() };
 }
 function mesclarConfig(cfg) {
   const base = configPadrao();
@@ -984,27 +1067,62 @@ function mesclarConfig(cfg) {
   let idColuna = typeof cfg.idColuna === "string" ? cfg.idColuna : base.idColuna;
   if (idColuna && !(conhecidas.has(idColuna) && idsUnicos(S, idColuna))) idColuna = "";
   const opcoes = Array.isArray(cfg.opcoes) && cfg.opcoes.length
-    ? cfg.opcoes.map(o => ({ nome: String(o.nome ?? ""), tecla: String(o.tecla ?? "").slice(0, 1).toLowerCase(), cor: CORES.includes(o.cor) ? o.cor : "cinza" }))
+    ? cfg.opcoes.map(o => ({ nome: String(o.nome ?? ""), desc: String(o.desc ?? ""), tecla: String(o.tecla ?? "").slice(0, 1).toLowerCase(),
+        cor: CORES.includes(o.cor) ? o.cor : (normHex(o.cor) || "cinza") }))
     : opcoesPadrao();
-  return { campos, idColuna, aleatorio: !!cfg.aleatorio, notas: !!cfg.notas, opcoes };
+  return { campos, idColuna, aleatorio: !!cfg.aleatorio, notas: !!cfg.notas, lado: !!cfg.lado, avancar: cfg.avancar !== false,
+    colunaRotulo: String(cfg.colunaRotulo || SAIDA.rotulo), instrucoes: String(cfg.instrucoes || ""), opcoes };
 }
+let campoErro = null;   // campo com o problema: recebe o foco e a mensagem logo embaixo
 function validar() {
-  if (!C().campos.some(x => x.mostrar)) return t("semColunaTela");
-  if (C().idColuna && !idsUnicos(S, C().idColuna)) return t("idRepetido", C().idColuna);
-  if (C().opcoes.length < 2) return t("doisRotulos");
+  campoErro = null;
+  const falha = (msg, campo) => { campoErro = campo || null; return msg; };
+  const campoDe = (i, sel) => { const l = $("cfg-opcoes").querySelectorAll(".opcao-cfg")[i]; return l ? l.querySelector(sel) : null; };
+  if (!C().campos.some(x => x.mostrar)) return falha(t("semColunaTela"), $("cfg-campos").querySelector("input[type=checkbox]"));
+  if (C().idColuna && !idsUnicos(S, C().idColuna)) return falha(t("idRepetido", C().idColuna), $("cfg-id"));
+  if (C().opcoes.length < 2) return falha(t("doisRotulos"), $("cfg-mais-opcao"));
   const nomes = new Set(), teclas = new Map();
-  for (const o of C().opcoes) {
+  for (const [i, o] of C().opcoes.entries()) {
     o.nome = o.nome.trim();
-    if (!o.nome) return t("rotuloSemNome");
-    if (nomes.has(o.nome)) return t("rotuloDuplo", o.nome);
+    if (!o.nome) return falha(t("rotuloSemNome"), campoDe(i, ".l1 > input:not(.tecla)"));
+    if (nomes.has(o.nome)) return falha(t("rotuloDuplo", o.nome), campoDe(i, ".l1 > input:not(.tecla)"));
     nomes.add(o.nome);
     o.tecla = (o.tecla || "").trim().toLowerCase();
     if (o.tecla) {
-      if (teclas.has(o.tecla)) return t("teclaDupla", o.tecla.toUpperCase(), teclas.get(o.tecla), o.nome);
+      if (teclas.has(o.tecla)) return falha(t("teclaDupla", o.tecla.toUpperCase(), teclas.get(o.tecla), o.nome), campoDe(i, "input.tecla"));
       teclas.set(o.tecla, o.nome);
     }
+    if (!CORES.includes(o.cor)) {
+      const h = normHex(o.cor);
+      if (!h) return falha(t("hexInvalida", o.nome), campoDe(i, "input.hex"));
+      o.cor = h;
+    }
+    o.desc = (o.desc || "").trim();
   }
+  const col = (C().colunaRotulo || "").trim();
+  if (!col) return falha(t("colunaVazia"), $("cfg-coluna"));
+  if ([SAIDA.nota, SAIDA.segundos, SAIDA.anotador, SAIDA.quando].includes(col)) return falha(t("colunaReservada", col), $("cfg-coluna"));
+  C().colunaRotulo = col;
   return "";
+}
+/* leva a tela até o campo com problema, marca a borda e repete a mensagem embaixo dele até a pessoa mexer ali */
+function focarErro(msg) {
+  for (const p of document.querySelectorAll(".erro-campo")) p.remove();
+  const alvo = campoErro;
+  if (!alvo || alvo.closest("[hidden]")) return;
+  const caixa = alvo.closest(".opcao-cfg, .coluna-rotulo, .opcoes-tela > div, #cfg-campos") || alvo.parentElement;
+  const aviso = el("p", { className: "erro erro-campo", textContent: msg, role: "alert" });
+  caixa.append(aviso);
+  alvo.setAttribute("aria-invalid", "true");
+  const aoMexer = e => { if (e.type === "input" || (e.target.closest && e.target.closest("button"))) limpar(); };
+  const limpar = () => {
+    aviso.remove(); alvo.removeAttribute("aria-invalid");
+    caixa.removeEventListener("input", aoMexer); caixa.removeEventListener("click", aoMexer);
+  };
+  caixa.addEventListener("input", aoMexer);
+  caixa.addEventListener("click", aoMexer);
+  alvo.scrollIntoView({ block: "center" });
+  alvo.focus({ preventScroll: true });
 }
 function teclaLivre() {
   const usadas = new Set(C().opcoes.map(o => o.tecla));
@@ -1020,21 +1138,89 @@ function renderModelo() {
       ...g.modelos.map(m => el("option", { value: String(MODELOS.indexOf(m)), textContent: nomeModelo(m) })))));
   sel.value = atual >= 0 ? String(atual) : "";
 }
+/* arrastar pela alça, ou setas do teclado com a alça em foco, reordena a lista e redesenha */
+function ordenavel(caixa, seletor, lista, aoMudar) {
+  const linhas = [...caixa.querySelectorAll(seletor)];
+  let de = null;
+  const limpar = () => linhas.forEach(l => l.classList.remove("alvo-acima", "alvo-abaixo", "arrastando"));
+  const mover = (a, b) => {
+    if (b < 0 || b >= lista.length || a === b) return;
+    const [x] = lista.splice(a, 1);
+    lista.splice(b, 0, x);
+    aoMudar();
+    const alca = caixa.querySelectorAll(seletor)[b];
+    if (alca && alca.querySelector(".alca")) alca.querySelector(".alca").focus();
+  };
+  linhas.forEach((linha, i) => {
+    const alca = linha.querySelector(".alca");
+    alca.addEventListener("pointerdown", () => { linha.draggable = true; });
+    alca.addEventListener("pointerup", () => { linha.draggable = false; });
+    alca.addEventListener("keydown", e => {
+      if (e.key === "ArrowUp") { e.preventDefault(); mover(i, i - 1); }
+      else if (e.key === "ArrowDown") { e.preventDefault(); mover(i, i + 1); }
+    });
+    linha.addEventListener("dragstart", e => { de = i; linha.classList.add("arrastando"); e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", String(i)); });
+    linha.addEventListener("dragend", () => { linha.draggable = false; de = null; limpar(); });
+    linha.addEventListener("dragover", e => {
+      if (de === null) return;
+      e.preventDefault();
+      const r = linha.getBoundingClientRect(), acima = e.clientY < r.top + r.height / 2;
+      linha.classList.toggle("alvo-acima", acima);
+      linha.classList.toggle("alvo-abaixo", !acima);
+    });
+    linha.addEventListener("dragleave", () => linha.classList.remove("alvo-acima", "alvo-abaixo"));
+    linha.addEventListener("drop", e => {
+      if (de === null) return;
+      e.preventDefault();
+      const r = linha.getBoundingClientRect();
+      let para = e.clientY < r.top + r.height / 2 ? i : i + 1;
+      if (de < para) para--;
+      const origem = de;
+      de = null; limpar();
+      mover(origem, para);
+    });
+  });
+}
+const alcaArrastar = () => el("button", { type: "button", className: "alca", title: t("arrastar"), "aria-label": t("arrastar") }, ic("grip-vertical"));
+
 function renderOpcoesCfg() {
-  const ops = C().opcoes;
-  $("cfg-opcoes").replaceChildren(
-    el("div", { className: "opcao-linha cabeca" }, ...t("opCabeca").map(x => el("span", { textContent: x })), el("span")),
-    ...ops.map((o, i) => {
-      const bolinha = el("span", { className: "bolinha", "data-cor": o.cor });
-      return el("div", { className: "opcao-linha" },
+  const ops = C().opcoes, caixa = $("cfg-opcoes");
+  caixa.replaceChildren(...ops.map((o, i) => {
+    const amostras = CORES.map(v => el("button", { type: "button", className: "amostra-cor", style: `--c:${NOMEADAS[v]}`, title: t("cores")[v], "aria-label": t("cores")[v],
+      "aria-pressed": String(o.cor === v), onclick: () => mudarCor(v) }));
+    const livre = el("input", { type: "color", className: "cor-livre", value: hexDe(o.cor), title: t("corLivre"), "aria-label": t("corLivre"), oninput: e => mudarCor(e.target.value) });
+    const hex = el("input", { type: "text", className: "hex", value: hexDe(o.cor), maxLength: 7, spellcheck: false, placeholder: "#3a76ba", "aria-label": t("hexAria"),
+      oninput: e => {
+        const h = normHex(e.target.value);
+        if (h) { mudarCor(h, true); return; }
+        /* hexadecimal pela metade: nenhuma bolinha fica marcada, para a tela não fingir uma cor que não vale */
+        o.cor = e.target.value.trim();
+        linha.dataset.cor = "";
+        amostras.forEach(b => b.setAttribute("aria-pressed", "false"));
+        e.target.setAttribute("aria-invalid", "true");
+        renderModelo();
+      } });
+    const linha = el("div", { className: "opcao-cfg", "data-cor": o.cor },
+      el("div", { className: "l1" },
+        alcaArrastar(),
         el("input", { type: "text", value: o.nome, placeholder: t("opNomePh"), "aria-label": t("opNomeAria"), oninput: e => { o.nome = e.target.value; renderModelo(); } }),
-        el("input", { type: "text", className: "tecla", value: o.tecla, maxLength: 2, "aria-label": t("teclaAria"), oninput: e => { e.target.value = e.target.value.slice(-1); o.tecla = e.target.value.toLowerCase(); renderModelo(); } }),
-        el("div", { className: "cor" }, bolinha,
-          el("select", { "aria-label": t("corAria"), onchange: e => { o.cor = e.target.value; bolinha.dataset.cor = o.cor; renderModelo(); } },
-            ...CORES.map(v => el("option", { value: v, textContent: t("cores")[v], selected: v === o.cor })))),
-        el("button", { type: "button", className: "pequeno", title: t("removerX", o.nome), "aria-label": t("removerX", o.nome), onclick: () => { ops.splice(i, 1); renderOpcoesCfg(); } }, ic("x"))
-      );
-    }));
+        el("input", { type: "text", className: "tecla", value: o.tecla, maxLength: 2, placeholder: t("teclaAria"), "aria-label": t("teclaAria"),
+          oninput: e => { e.target.value = e.target.value.slice(-1); o.tecla = e.target.value.toLowerCase(); renderModelo(); } }),
+        el("div", { className: "cores" }, ...amostras, livre, hex),
+        el("button", { type: "button", className: "pequeno", title: t("removerX", o.nome), "aria-label": t("removerX", o.nome), onclick: () => { ops.splice(i, 1); renderOpcoesCfg(); } }, ic("x"))),
+      el("input", { type: "text", className: "desc", value: o.desc || "", placeholder: t("descPh"), "aria-label": t("descPh"), oninput: e => { o.desc = e.target.value; renderModelo(); } }));
+    function mudarCor(v, digitando) {
+      o.cor = CORES.includes(v) ? v : (normHex(v) || o.cor);
+      linha.dataset.cor = o.cor;
+      amostras.forEach((b, k) => b.setAttribute("aria-pressed", String(CORES[k] === o.cor)));
+      livre.value = hexDe(o.cor);
+      if (!digitando) hex.value = hexDe(o.cor);
+      hex.removeAttribute("aria-invalid");
+      renderModelo();
+    }
+    return linha;
+  }));
+  ordenavel(caixa, ".opcao-cfg", ops, renderOpcoesCfg);
   renderModelo();
 }
 
@@ -1193,6 +1379,10 @@ function telaConfig() {
   $("cfg-id-aviso").textContent = "";
   $("cfg-aleatorio").checked = C().aleatorio;
   $("cfg-notas").checked = C().notas;
+  $("cfg-lado").checked = C().lado;
+  $("cfg-avancar").checked = C().avancar;
+  $("cfg-coluna").value = C().colunaRotulo;
+  $("cfg-instrucoes").value = C().instrucoes;
   renderOpcoesCfg();
   $("cfg-nome").value = anotador || ultimoNome();
   mostrarErro("cfg-erro", "");
@@ -1202,9 +1392,10 @@ function renderCampos() {
   const campos = C().campos;
   const mover = (i, d) => { const j = i + d; [campos[i], campos[j]] = [campos[j], campos[i]]; renderCampos(); };
   $("cfg-campos").replaceChildren(
-    el("div", { className: "campo-linha cabeca" }, ...t("colCabeca").map(x => el("span", { textContent: x }))),
+    el("div", { className: "campo-linha cabeca" }, el("span"), ...t("colCabeca").map(x => el("span", { textContent: x }))),
     ...campos.map((c, i) => {
       const linha = el("div", { className: "campo-linha" + (c.mostrar ? "" : " escondida") },
+        alcaArrastar(),
         el("label", {}, el("input", { type: "checkbox", checked: c.mostrar, onchange: e => { c.mostrar = e.target.checked; linha.classList.toggle("escondida", !c.mostrar); } }), el("code", { textContent: c.coluna })),
         el("input", { type: "text", value: c.nome, "aria-label": t("nomeNaTela", c.coluna), oninput: e => { c.nome = e.target.value; } }),
         el("span", { className: "amostra", textContent: amostraDe(c.coluna), title: amostraDe(c.coluna) }),
@@ -1213,12 +1404,15 @@ function renderCampos() {
           el("button", { type: "button", className: "pequeno", title: t("descer"), "aria-label": t("descer"), disabled: i === campos.length - 1, onclick: () => mover(i, 1) }, ic("arrow-down"))));
       return linha;
     }));
+  ordenavel($("cfg-campos"), ".campo-linha:not(.cabeca)", campos, renderCampos);
 }
 
 function telaNome() {
   mostrarTela("nome");
   $("nome-titulo").textContent = nomeExibido();
   $("nome-resumo").textContent = t("nomeResumo", S.linhas.length, C().opcoes.map(o => o.nome + (o.tecla ? ` (${t("teclaX", o.tecla.toUpperCase())})` : "")).join(", "));
+  $("nome-instrucoes").hidden = !C().instrucoes.trim();
+  $("nome-instrucoes").textContent = C().instrucoes;
   listaSessoes($("nome-lista-sessoes"), $("nome-sessoes"), v => comecar(v.anotador));
   $("nome-nome").value = anotador;
   mostrarErro("nome-erro", "");
@@ -1263,7 +1457,7 @@ function novaSessao() {
 function comecar(nome) {
   const erroId = S.pacote ? "nome-erro" : "cfg-erro";
   const err = validar();
-  if (err) { mostrarErro(erroId, err); return; }
+  if (err) { mostrarErro(erroId, err); if (!S.pacote) focarErro(err); return; }
   nome = (nome || "").trim();
   if (!nome) { mostrarErro(erroId, t("semNome")); $(S.pacote ? "nome-nome" : "cfg-nome").focus(); return; }
   anotador = nome;
@@ -1293,9 +1487,16 @@ function iniciarRelogio() { marca = (itemAtual() && !document.hidden) ? performa
 
 function telaAnotar() {
   mostrarTela("anotar");
-  $("an-opcoes").replaceChildren(...C().opcoes.map(o => el("button", {
-    type: "button", className: "opcao", "data-cor": o.cor, "data-nome": o.nome, "aria-pressed": "false", onclick: () => responder(o.nome)
-  }, o.tecla ? el("kbd", { textContent: o.tecla.toUpperCase() }) : null, el("span", { textContent: o.nome }), ic("check"))));
+  $("an-opcoes").replaceChildren(...C().opcoes.map(o => {
+    const livre = !CORES.includes(o.cor);   // cor em hexadecimal: o tom do texto e do fundo sai dela, no tema
+    return el("button", { type: "button", className: "opcao", "data-cor": livre ? "hex" : o.cor, style: livre ? `--c:${o.cor}` : null,
+      "data-nome": o.nome, "aria-pressed": "false", onclick: () => responder(o.nome) },
+      o.tecla ? el("kbd", { textContent: o.tecla.toUpperCase() }) : null,
+      el("span", { className: "txt" }, el("span", { textContent: o.nome }), o.desc ? el("small", { textContent: o.desc }) : null),
+      ic("check"));
+  }));
+  $("an-instrucoes").hidden = !C().instrucoes.trim();
+  $("an-instrucoes-texto").textContent = C().instrucoes;
   $("an-atalhos").replaceChildren(
     ...C().opcoes.filter(o => o.tecla).map(o => el("span", { className: "atalho" }, el("kbd", { textContent: o.tecla.toUpperCase() }), o.nome.toLowerCase())),
     el("span", { className: "atalho" }, el("kbd", { textContent: "←" }), el("kbd", { textContent: "→" }), t("navegam")));
@@ -1346,6 +1547,7 @@ function renderAnotar() {
   $("an-pos").textContent = t("posDe", sessao.pos + 1, N);
   $("an-campos").replaceChildren(...C().campos.filter(c => c.mostrar).map(c => el("div", { className: "campo" },
     el("div", { className: "campo-nome", textContent: c.nome || c.coluna }), renderValor(linha[c.coluna]))));
+  $("an-campos").classList.toggle("lado", !!C().lado);
   atualizarBotoes(id);
   $("an-nota").value = (sessao.respostas[id] && sessao.respostas[id].nota) || "";
   $("an-anterior").disabled = sessao.pos === 0;
@@ -1372,7 +1574,8 @@ function responder(rotulo) {
   if (!id) return;
   sessao.respostas[id] = Object.assign({}, sessao.respostas[id], { rotulo, quando: new Date().toISOString() });
   $("ultimo").textContent = t("ultimo", rotuloItem(id), rotulo);
-  irPara(sessao.pos + 1);
+  if (C().avancar === false) { pararRelogio(); salvar(); renderAnotar(); }   // fica no item; as setas levam adiante
+  else irPara(sessao.pos + 1);
 }
 
 /* ---------- saídas ---------- */
@@ -1389,7 +1592,7 @@ function baixarCSV() {
   const usadas = new Set(S.colunas);
   const nova = n => { let x = n; while (usadas.has(x)) x += "_new"; usadas.add(x); return x; };
   const notas = C().notas;
-  const cab = [...S.colunas, nova(SAIDA.rotulo), ...(notas ? [nova(SAIDA.nota)] : []), nova(SAIDA.segundos), nova(SAIDA.anotador), nova(SAIDA.quando)];
+  const cab = [...S.colunas, nova(C().colunaRotulo || SAIDA.rotulo), ...(notas ? [nova(SAIDA.nota)] : []), nova(SAIDA.segundos), nova(SAIDA.anotador), nova(SAIDA.quando)];
   const saida = [cab.map(c => campoCSV(c, d)).join(d)];
   S.linhas.forEach((l, i) => {
     const id = idDe(i), r = sessao.respostas[id] || {};
@@ -1423,7 +1626,7 @@ async function importarProgresso(file) {
 }
 function gerarPagina() {
   const err = validar();
-  if (err) { mostrarErro("cfg-erro", err); return; }
+  if (err) { mostrarErro("cfg-erro", err); focarErro(err); return; }
   mostrarErro("cfg-erro", "");
   if (!FONTE.includes(MARCA)) { alert(t("jaGerada")); return; }
   const pacote = { arquivo: S.arquivo, planilha: S.planilha || null, formato: S.formato, delim: S.delim, colunas: S.colunas, linhas: S.linhas, hash: S.hash, config: C(), gerado: new Date().toISOString() };
@@ -1464,8 +1667,12 @@ $("cfg-id").addEventListener("change", e => {
 });
 $("cfg-aleatorio").addEventListener("change", e => { C().aleatorio = e.target.checked; });
 $("cfg-notas").addEventListener("change", e => { C().notas = e.target.checked; });
+$("cfg-lado").addEventListener("change", e => { C().lado = e.target.checked; });
+$("cfg-avancar").addEventListener("change", e => { C().avancar = e.target.checked; });
+$("cfg-coluna").addEventListener("input", e => { C().colunaRotulo = e.target.value; });
+$("cfg-instrucoes").addEventListener("input", e => { C().instrucoes = e.target.value; });
 $("cfg-modelo").addEventListener("change", e => { if (e.target.value === "") return; C().opcoes = opcoesDe(MODELOS[+e.target.value]); renderOpcoesCfg(); });
-$("cfg-mais-opcao").addEventListener("click", () => { C().opcoes.push({ nome: "", tecla: teclaLivre(), cor: "cinza" }); renderOpcoesCfg(); });
+$("cfg-mais-opcao").addEventListener("click", () => { C().opcoes.push({ nome: "", desc: "", tecla: teclaLivre(), cor: "cinza" }); renderOpcoesCfg(); });
 $("cfg-comecar").addEventListener("click", () => comecar($("cfg-nome").value));
 $("cfg-nome").addEventListener("keydown", e => { if (e.key === "Enter") comecar($("cfg-nome").value); });
 $("cfg-gerar").addEventListener("click", gerarPagina);
@@ -1513,6 +1720,17 @@ document.addEventListener("visibilitychange", () => {
   if (document.hidden) { pararRelogio(); salvar(); } else iniciarRelogio();
 });
 window.addEventListener("pagehide", () => { if (tela === "anotar" && sessao) { pararRelogio(); salvar(); } });
+
+/* o vídeo de demonstração mora em docs/: com o index.html sozinho (ou na página gerada), a seção some */
+(function videoDemo() {
+  const capa = new Image();
+  capa.onerror = () => { $("video-demo").hidden = true; $("link-video").hidden = true; };
+  capa.src = "docs/demo-poster.jpg";
+  /* legenda só com a página servida: aberta como arquivo, o navegador barra o .vtt */
+  if (/^https?:$/.test(location.protocol)) {
+    $("video-demo").querySelector("video").append(el("track", { kind: "captions", srclang: "en", label: "English", src: "docs/demo.vtt", default: true }));
+  }
+})();
 
 /* ---------- início ---------- */
 (function iniciar() {
